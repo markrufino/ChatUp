@@ -17,6 +17,8 @@ struct PusherCredentials: Decodable {
 }
 
 extension PusherCredentials {
+    
+    static let `default`: PusherCredentials = PusherCredentials.create(fromJSONFileWithName: "pusher_credentials")
 
     static func create(fromJSONFileWithName name: String) -> PusherCredentials {
         guard let file = Bundle.main.path(forResource: name, ofType: "json") else {

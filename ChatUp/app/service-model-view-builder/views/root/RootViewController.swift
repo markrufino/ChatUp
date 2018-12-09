@@ -13,8 +13,7 @@ class RootViewController: UIViewController, CreatedFromNib {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let pusherCredentials = PusherCredentials.create(fromJSONFileWithName: "pusher_credentials")
-        pushService?.start(usingCredentials: pusherCredentials, withServiceable: self)
+        pushService?.start(usingCredentials: PusherCredentials.default, withServiceable: self)
     }
 }
 
