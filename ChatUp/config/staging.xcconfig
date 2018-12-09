@@ -1,0 +1,16 @@
+//
+//  staging.xcconfig
+//  Sandbox
+//
+//  Created by Mark on 16/10/2018.
+//  Copyright © 2018 mark. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "Pods/Target Support Files/Pods-ChatUp/Pods-ChatUp.staging.xcconfig"
+
+SCHEME=https
+HOST=www.staging.com/api
+NAMESPACE=$(PRODUCT_BUNDLE_IDENTIFIER).staging
