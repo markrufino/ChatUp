@@ -11,7 +11,7 @@ import Foundation
 class ChatBuilder: BuilderType<ChatViewController> {
     
     override func build() -> ChatViewController {
-        view.pushService = PushService()
+        view.pushService = ChatService()
         return view
     }
     

@@ -14,7 +14,6 @@
             <connections>
                 <outlet property="chatTableView" destination="qve-QW-fBZ" id="LXP-sZ-16h"/>
                 <outlet property="messageTextView" destination="xaX-8z-ATV" id="iFw-ds-Rkw"/>
-                <outlet property="messageTextViewHeightConstraint" destination="r90-Fp-7K6" id="9xy-rb-quv"/>
                 <outlet property="sendButton" destination="z4r-EI-3pd" id="eq5-xZ-RTi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -42,15 +41,12 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z9H-An-9fk">
-                    <rect key="frame" x="0.0" y="563" width="375" height="48"/>
+                    <rect key="frame" x="0.0" y="551" width="375" height="60"/>
                     <subviews>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xaX-8z-ATV">
-                            <rect key="frame" x="8" y="8" width="359" height="32"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="44" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xaX-8z-ATV">
+                            <rect key="frame" x="8" y="8" width="359" height="44"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="32" id="r90-Fp-7K6"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                     </subviews>
