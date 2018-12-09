@@ -56,9 +56,6 @@ extension ChatViewController: UITextViewDelegate {
         let clampedHeight = min(messageTextViewMaxHeight, max(44.0, newSize.height))
         messageTextViewHeightConstraint?.constant = clampedHeight
         textView.isScrollEnabled = newSize.height >= messageTextViewMaxHeight
-        if textView.isScrollEnabled {
-            print("f")
-        }
     }
     
 }
@@ -84,7 +81,7 @@ extension ChatViewController: ChatServiceable {
     
     func chatService(receivedMessage: ChatMessageType, from sender: String) {
         if case .string(let message) = receivedMessage {
-            print("Received string message \(message)")
+            print("Received string message \(message) from \(sender)")
         }
     }
     

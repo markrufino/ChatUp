@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		42B8FF0CDB6F24FEB8E8A7A1 /* Pods_ChatUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261A11F2AFC4727268D7137D /* Pods_ChatUp.framework */; };
+		5C07CA1921BCF3640067AAF9 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C07CA1821BCF3640067AAF9 /* ChatMessage.swift */; };
 		5C6E92F321BC8E28005FECCA /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E92D621BC8E27005FECCA /* Provider.swift */; };
 		5C6E92F421BC8E28005FECCA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E92D721BC8E27005FECCA /* API.swift */; };
 		5C6E92F521BC8E28005FECCA /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E92D921BC8E27005FECCA /* ResultType.swift */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		261A11F2AFC4727268D7137D /* Pods_ChatUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EA6B311978F28A426D45125 /* Pods-ChatUp.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatUp.production.xcconfig"; path = "Pods/Target Support Files/Pods-ChatUp/Pods-ChatUp.production.xcconfig"; sourceTree = "<group>"; };
+		5C07CA1821BCF3640067AAF9 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		5C1B554C249294538DF40718 /* Pods-ChatUp.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatUp.staging.xcconfig"; path = "Pods/Target Support Files/Pods-ChatUp/Pods-ChatUp.staging.xcconfig"; sourceTree = "<group>"; };
 		5C6E92D621BC8E27005FECCA /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		5C6E92D721BC8E27005FECCA /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				5C6E933821BCA1C2005FECCA /* PusherCredentials.swift */,
+				5C07CA1821BCF3640067AAF9 /* ChatMessage.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				5C6E92FB21BC8E28005FECCA /* AppDelegate.swift in Sources */,
 				5CCC19E921BCB8A000E25C95 /* ChatBuilder.swift in Sources */,
 				5C6E933121BC9966005FECCA /* BuilderType.swift in Sources */,
+				5C07CA1921BCF3640067AAF9 /* ChatMessage.swift in Sources */,
 				5C6E932F21BC995C005FECCA /* ServiceType.swift in Sources */,
 				5C6E92F721BC8E28005FECCA /* Provider+refreshTokenAndRetry.swift in Sources */,
 				5CCC19ED21BCBD1300E25C95 /* RouterType.swift in Sources */,
