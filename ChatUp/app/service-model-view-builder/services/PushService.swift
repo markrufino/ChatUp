@@ -22,11 +22,14 @@ protocol PushServiceable {
 
 enum PushServiceMessageType {
     case text(String)
-}
-
-enum PushServiceEvent: String {
-    case stringMessageReceived
-    case stringMessageSend
+    
+    var sendEvent: String {
+        return ""
+    }
+    
+    var receiveEvent: String {
+        return ""
+    }
 }
 
 class PushService: PushServicing {
@@ -39,9 +42,17 @@ class PushService: PushServicing {
     func start(usingCredentials credentials: PusherCredentials, withServiceable serviceable: PushServiceable) {
         let options = PusherClientOptions(host: .cluster(credentials.cluster))
         pusher = Pusher(withAppKey: credentials.key, options: options)
-        channel = pusher?.subscribe(channelName: credentials.channel)
+        pusher?.connect()
+        channel = pusher?.subscribe(
+            channelName: credentials.channel,
+            onMemberAdded: {
+                print($0)
+        },
+            onMemberRemoved: {
+                print($0)
+        })
         self.serviceable = serviceable
-        channel?.bind(eventName: PushServiceEvent.stringMessageReceived.rawValue, callback: handleReceivedStringMessage(_:))
+        channel?.bind(eventName: PushServiceMessageType.text("").receiveEvent, callback: handleReceivedStringMessage(_:))
     }
     
     private func handleReceivedStringMessage(_ data: Any?) {
@@ -56,7 +67,7 @@ class PushService: PushServicing {
     func send(message: PushServiceMessageType) {
         switch message {
         case .text(let stringMessage):
-            channel?.trigger(eventName: PushServiceEvent.stringMessageSend.rawValue, data: stringMessage)
+            channel?.trigger(eventName: message.sendEvent, data: stringMessage)
         }
         
     }

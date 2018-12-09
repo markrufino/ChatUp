@@ -27,7 +27,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="JSY-PX-RAS" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Hm1-0N-VDj"/>
                 <constraint firstItem="JSY-PX-RAS" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="XbA-Mm-TIS"/>

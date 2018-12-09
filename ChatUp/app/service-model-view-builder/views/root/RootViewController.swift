@@ -9,26 +9,18 @@
 import UIKit
 
 class RootViewController: UIViewController, CreatedFromNib {
-    var pushService: PushServicing?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        pushService?.start(usingCredentials: PusherCredentials.default, withServiceable: self)
-    }
-}
-
-extension RootViewController: PushServiceable {
-    
-    func pushServiceHasConnectedSuccessfully() {
-        print("Push service connection success!")
     }
     
-    func pushServiceDidNotConnectSuccessfully() {
-        print("Push service connection failed!")
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        perform(#selector(goToChat), with: nil, afterDelay: 2.0)
     }
     
-    func pushServiceable(receivedMessage: PushServiceMessageType) {
-        print(receivedMessage)
+    @objc private func goToChat() {
+        self.present(ChatBuilder().build(), animated: true, completion: nil)
     }
     
 }

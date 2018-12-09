@@ -34,6 +34,10 @@
 		5C6E933721BCA03A005FECCA /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E933621BCA03A005FECCA /* PushService.swift */; };
 		5C6E933921BCA1C2005FECCA /* PusherCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E933821BCA1C2005FECCA /* PusherCredentials.swift */; };
 		5CCC19E221BCA8D000E25C95 /* pusher_credentials.json in Resources */ = {isa = PBXBuildFile; fileRef = 5CCC19E121BCA8D000E25C95 /* pusher_credentials.json */; };
+		5CCC19E621BCB89700E25C95 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC19E421BCB89700E25C95 /* ChatViewController.swift */; };
+		5CCC19E721BCB89700E25C95 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CCC19E521BCB89700E25C95 /* ChatViewController.xib */; };
+		5CCC19E921BCB8A000E25C95 /* ChatBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC19E821BCB8A000E25C95 /* ChatBuilder.swift */; };
+		5CCC19ED21BCBD1300E25C95 /* RouterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC19EC21BCBD1300E25C95 /* RouterType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +71,10 @@
 		5C6E933621BCA03A005FECCA /* PushService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushService.swift; sourceTree = "<group>"; };
 		5C6E933821BCA1C2005FECCA /* PusherCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PusherCredentials.swift; sourceTree = "<group>"; };
 		5CCC19E121BCA8D000E25C95 /* pusher_credentials.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = pusher_credentials.json; sourceTree = "<group>"; };
+		5CCC19E421BCB89700E25C95 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		5CCC19E521BCB89700E25C95 /* ChatViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
+		5CCC19E821BCB8A000E25C95 /* ChatBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBuilder.swift; sourceTree = "<group>"; };
+		5CCC19EC21BCBD1300E25C95 /* RouterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterType.swift; sourceTree = "<group>"; };
 		5CDBE94A21A1480A00F4209C /* ChatUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		806F17B4E514556546038194 /* Pods-ChatUp.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatUp.development.xcconfig"; path = "Pods/Target Support Files/Pods-ChatUp/Pods-ChatUp.development.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				5C6E933021BC9966005FECCA /* BuilderType.swift */,
+				5CCC19EC21BCBD1300E25C95 /* RouterType.swift */,
 				5C6E932E21BC995C005FECCA /* ServiceType.swift */,
 				5C6E933221BC998B005FECCA /* ViewType.swift */,
 				5C6E933421BC9990005FECCA /* models */,
@@ -222,6 +231,7 @@
 		5C6E932521BC9904005FECCA /* views */ = {
 			isa = PBXGroup;
 			children = (
+				5CCC19E321BCB87E00E25C95 /* chat */,
 				5C6E932A21BC991F005FECCA /* root */,
 			);
 			path = views;
@@ -243,6 +253,16 @@
 				5C6E933821BCA1C2005FECCA /* PusherCredentials.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		5CCC19E321BCB87E00E25C95 /* chat */ = {
+			isa = PBXGroup;
+			children = (
+				5CCC19E821BCB8A000E25C95 /* ChatBuilder.swift */,
+				5CCC19E421BCB89700E25C95 /* ChatViewController.swift */,
+				5CCC19E521BCB89700E25C95 /* ChatViewController.xib */,
+			);
+			path = chat;
 			sourceTree = "<group>";
 		};
 		5CDBE94121A1480A00F4209C = {
@@ -347,6 +367,7 @@
 				5CCC19E221BCA8D000E25C95 /* pusher_credentials.json in Resources */,
 				5C6E930121BC8E28005FECCA /* Assets.xcassets in Resources */,
 				5C6E930221BC8E28005FECCA /* LaunchScreen.storyboard in Resources */,
+				5CCC19E721BCB89700E25C95 /* ChatViewController.xib in Resources */,
 				5C6E92FE21BC8E28005FECCA /* development.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,10 +443,12 @@
 				5C6E92F821BC8E28005FECCA /* APIAuthType.swift in Sources */,
 				5C6E931921BC944B005FECCA /* CreatedFromNib.swift in Sources */,
 				5C6E92FB21BC8E28005FECCA /* AppDelegate.swift in Sources */,
+				5CCC19E921BCB8A000E25C95 /* ChatBuilder.swift in Sources */,
 				5C6E933121BC9966005FECCA /* BuilderType.swift in Sources */,
 				5C6E932F21BC995C005FECCA /* ServiceType.swift in Sources */,
 				5C6E932821BC991C005FECCA /* RootViewController.swift in Sources */,
 				5C6E92F721BC8E28005FECCA /* Provider+refreshTokenAndRetry.swift in Sources */,
+				5CCC19ED21BCBD1300E25C95 /* RouterType.swift in Sources */,
 				5C6E92F921BC8E28005FECCA /* Keychain.swift in Sources */,
 				5C6E92FC21BC8E28005FECCA /* ApiError.swift in Sources */,
 				5C6E92F621BC8E28005FECCA /* Provider+requestDecodable.swift in Sources */,
@@ -435,6 +458,7 @@
 				5C6E92F421BC8E28005FECCA /* API.swift in Sources */,
 				5C6E933321BC998B005FECCA /* ViewType.swift in Sources */,
 				5C6E933921BCA1C2005FECCA /* PusherCredentials.swift in Sources */,
+				5CCC19E621BCB89700E25C95 /* ChatViewController.swift in Sources */,
 				5C6E933721BCA03A005FECCA /* PushService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
