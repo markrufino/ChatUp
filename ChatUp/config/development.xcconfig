@@ -12,5 +12,5 @@
 #include "Pods/Target Support Files/Pods-ChatUp/Pods-ChatUp.development.xcconfig"
 
 SCHEME=https
-HOST=www.development.com/api
+HOST=chatup.staging.ph/api
 NAMESPACE=$(PRODUCT_BUNDLE_IDENTIFIER).development

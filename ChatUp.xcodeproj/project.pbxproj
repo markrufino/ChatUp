@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		42B8FF0CDB6F24FEB8E8A7A1 /* Pods_ChatUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261A11F2AFC4727268D7137D /* Pods_ChatUp.framework */; };
-		5C07CA1921BCF3640067AAF9 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C07CA1821BCF3640067AAF9 /* ChatMessage.swift */; };
+		5C2CAE8021BE82C20014C86B /* pusher_keys.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C2CAE7F21BE82C20014C86B /* pusher_keys.json */; };
+		5C2CAE8221BE836B0014C86B /* PusherKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2CAE8121BE836B0014C86B /* PusherKeys.swift */; };
 		5C6E92F321BC8E28005FECCA /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E92D621BC8E27005FECCA /* Provider.swift */; };
 		5C6E92F421BC8E28005FECCA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E92D721BC8E27005FECCA /* API.swift */; };
 		5C6E92F521BC8E28005FECCA /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E92D921BC8E27005FECCA /* ResultType.swift */; };
@@ -31,21 +32,29 @@
 		5C6E932F21BC995C005FECCA /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E932E21BC995C005FECCA /* ServiceType.swift */; };
 		5C6E933121BC9966005FECCA /* BuilderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E933021BC9966005FECCA /* BuilderType.swift */; };
 		5C6E933321BC998B005FECCA /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E933221BC998B005FECCA /* ViewType.swift */; };
-		5C6E933921BCA1C2005FECCA /* PusherCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E933821BCA1C2005FECCA /* PusherCredentials.swift */; };
-		5CCC19E221BCA8D000E25C95 /* pusher_credentials.json in Resources */ = {isa = PBXBuildFile; fileRef = 5CCC19E121BCA8D000E25C95 /* pusher_credentials.json */; };
 		5CCC19E621BCB89700E25C95 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC19E421BCB89700E25C95 /* ChatViewController.swift */; };
 		5CCC19E721BCB89700E25C95 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CCC19E521BCB89700E25C95 /* ChatViewController.xib */; };
 		5CCC19E921BCB8A000E25C95 /* ChatBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC19E821BCB8A000E25C95 /* ChatBuilder.swift */; };
-		5CCC19ED21BCBD1300E25C95 /* RouterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC19EC21BCBD1300E25C95 /* RouterType.swift */; };
 		5CCC19F121BCC78400E25C95 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC19F021BCC78400E25C95 /* ChatService.swift */; };
 		5CCC19F221BCCD7500E25C95 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E932621BC991C005FECCA /* RootViewController.swift */; };
+		5CF46C0021BE1A29009E8AC8 /* Encodable+asDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF46BFF21BE1A29009E8AC8 /* Encodable+asDictionary.swift */; };
+		5CF46C0221BE1AC0009E8AC8 /* JSONEncoder+snakeCaseEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF46C0121BE1AC0009E8AC8 /* JSONEncoder+snakeCaseEncoder.swift */; };
+		5CF46C0421BE1B12009E8AC8 /* JSONDecoder+snakeCaseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF46C0321BE1B12009E8AC8 /* JSONDecoder+snakeCaseDecoder.swift */; };
+		5CF46C0B21BE22B2009E8AC8 /* DataParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF46C0A21BE22B2009E8AC8 /* DataParam.swift */; };
+		5CF46C0F21BE2695009E8AC8 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF46C0E21BE2695009E8AC8 /* ChatMessage.swift */; };
+		5CF46C1121BE26C4009E8AC8 /* ChatMessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF46C1021BE26C4009E8AC8 /* ChatMessageSender.swift */; };
+		5CF46C1321BE2751009E8AC8 /* UserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF46C1221BE2751009E8AC8 /* UserInfoService.swift */; };
+		5CF46C1521BE3B65009E8AC8 /* ChatMessageKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF46C1421BE3B65009E8AC8 /* ChatMessageKind.swift */; };
+		5CF46C1821BE5DDD009E8AC8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CF46C1721BE5DDD009E8AC8 /* Colors.xcassets */; };
+		5CF46C1B21BE62B5009E8AC8 /* UIView+cornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF46C1A21BE62B5009E8AC8 /* UIView+cornerRadius.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		261A11F2AFC4727268D7137D /* Pods_ChatUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EA6B311978F28A426D45125 /* Pods-ChatUp.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatUp.production.xcconfig"; path = "Pods/Target Support Files/Pods-ChatUp/Pods-ChatUp.production.xcconfig"; sourceTree = "<group>"; };
-		5C07CA1821BCF3640067AAF9 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		5C1B554C249294538DF40718 /* Pods-ChatUp.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatUp.staging.xcconfig"; path = "Pods/Target Support Files/Pods-ChatUp/Pods-ChatUp.staging.xcconfig"; sourceTree = "<group>"; };
+		5C2CAE7F21BE82C20014C86B /* pusher_keys.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = pusher_keys.json; sourceTree = "<group>"; };
+		5C2CAE8121BE836B0014C86B /* PusherKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PusherKeys.swift; sourceTree = "<group>"; };
 		5C6E92D621BC8E27005FECCA /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		5C6E92D721BC8E27005FECCA /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		5C6E92D921BC8E27005FECCA /* ResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
@@ -70,14 +79,21 @@
 		5C6E932E21BC995C005FECCA /* ServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
 		5C6E933021BC9966005FECCA /* BuilderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderType.swift; sourceTree = "<group>"; };
 		5C6E933221BC998B005FECCA /* ViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewType.swift; sourceTree = "<group>"; };
-		5C6E933821BCA1C2005FECCA /* PusherCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PusherCredentials.swift; sourceTree = "<group>"; };
-		5CCC19E121BCA8D000E25C95 /* pusher_credentials.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = pusher_credentials.json; sourceTree = "<group>"; };
 		5CCC19E421BCB89700E25C95 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		5CCC19E521BCB89700E25C95 /* ChatViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
 		5CCC19E821BCB8A000E25C95 /* ChatBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBuilder.swift; sourceTree = "<group>"; };
-		5CCC19EC21BCBD1300E25C95 /* RouterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterType.swift; sourceTree = "<group>"; };
 		5CCC19F021BCC78400E25C95 /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		5CDBE94A21A1480A00F4209C /* ChatUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CF46BFF21BE1A29009E8AC8 /* Encodable+asDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+asDictionary.swift"; sourceTree = "<group>"; };
+		5CF46C0121BE1AC0009E8AC8 /* JSONEncoder+snakeCaseEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+snakeCaseEncoder.swift"; sourceTree = "<group>"; };
+		5CF46C0321BE1B12009E8AC8 /* JSONDecoder+snakeCaseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+snakeCaseDecoder.swift"; sourceTree = "<group>"; };
+		5CF46C0A21BE22B2009E8AC8 /* DataParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParam.swift; sourceTree = "<group>"; };
+		5CF46C0E21BE2695009E8AC8 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		5CF46C1021BE26C4009E8AC8 /* ChatMessageSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageSender.swift; sourceTree = "<group>"; };
+		5CF46C1221BE2751009E8AC8 /* UserInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoService.swift; sourceTree = "<group>"; };
+		5CF46C1421BE3B65009E8AC8 /* ChatMessageKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageKind.swift; sourceTree = "<group>"; };
+		5CF46C1721BE5DDD009E8AC8 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		5CF46C1A21BE62B5009E8AC8 /* UIView+cornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+cornerRadius.swift"; sourceTree = "<group>"; };
 		806F17B4E514556546038194 /* Pods-ChatUp.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatUp.development.xcconfig"; path = "Pods/Target Support Files/Pods-ChatUp/Pods-ChatUp.development.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,9 +126,11 @@
 				5C6E92E021BC8E27005FECCA /* AppDelegate.swift */,
 				5C6E930621BC9151005FECCA /* data */,
 				5C6E92E121BC8E27005FECCA /* errors */,
-				5C6E932221BC9882005FECCA /* extensions */,
+				5CF46BFE21BE19FB009E8AC8 /* extensions */,
+				5CF46C0921BE1FE1009E8AC8 /* models */,
 				5C6E932021BC9843005FECCA /* protocols */,
-				5C6E932321BC9896005FECCA /* service-model-view-builder */,
+				5CF46C0821BE1FC7009E8AC8 /* services */,
+				5C6E932521BC9904005FECCA /* views */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -170,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				5C6E92E921BC8E27005FECCA /* Assets.xcassets */,
+				5CF46C1721BE5DDD009E8AC8 /* Colors.xcassets */,
 				5C6E92EA21BC8E27005FECCA /* LaunchScreen.storyboard */,
 			);
 			path = resources;
@@ -178,8 +197,8 @@
 		5C6E92EC21BC8E27005FECCA /* supporting-files */ = {
 			isa = PBXGroup;
 			children = (
-				5CCC19E121BCA8D000E25C95 /* pusher_credentials.json */,
 				5C6E92ED21BC8E27005FECCA /* Info.plist */,
+				5C2CAE7F21BE82C20014C86B /* pusher_keys.json */,
 			);
 			path = "supporting-files";
 			sourceTree = "<group>";
@@ -196,43 +215,18 @@
 		5C6E932021BC9843005FECCA /* protocols */ = {
 			isa = PBXGroup;
 			children = (
+				5C6E933021BC9966005FECCA /* BuilderType.swift */,
+				5C6E932E21BC995C005FECCA /* ServiceType.swift */,
+				5C6E933221BC998B005FECCA /* ViewType.swift */,
 				5C6E931821BC944B005FECCA /* CreatedFromNib.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
 		};
-		5C6E932221BC9882005FECCA /* extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = extensions;
-			sourceTree = "<group>";
-		};
-		5C6E932321BC9896005FECCA /* service-model-view-builder */ = {
-			isa = PBXGroup;
-			children = (
-				5C6E933021BC9966005FECCA /* BuilderType.swift */,
-				5CCC19EC21BCBD1300E25C95 /* RouterType.swift */,
-				5C6E932E21BC995C005FECCA /* ServiceType.swift */,
-				5C6E933221BC998B005FECCA /* ViewType.swift */,
-				5C6E933421BC9990005FECCA /* models */,
-				5C6E932421BC98FC005FECCA /* services */,
-				5C6E932521BC9904005FECCA /* views */,
-			);
-			path = "service-model-view-builder";
-			sourceTree = "<group>";
-		};
-		5C6E932421BC98FC005FECCA /* services */ = {
-			isa = PBXGroup;
-			children = (
-				5CCC19F021BCC78400E25C95 /* ChatService.swift */,
-			);
-			path = services;
-			sourceTree = "<group>";
-		};
 		5C6E932521BC9904005FECCA /* views */ = {
 			isa = PBXGroup;
 			children = (
+				5CF46C1921BE6127009E8AC8 /* custom */,
 				5CCC19E321BCB87E00E25C95 /* chat */,
 				5C6E932A21BC991F005FECCA /* root */,
 			);
@@ -247,15 +241,6 @@
 				5C6E932721BC991C005FECCA /* RootViewController.xib */,
 			);
 			path = root;
-			sourceTree = "<group>";
-		};
-		5C6E933421BC9990005FECCA /* models */ = {
-			isa = PBXGroup;
-			children = (
-				5C6E933821BCA1C2005FECCA /* PusherCredentials.swift */,
-				5C07CA1821BCF3640067AAF9 /* ChatMessage.swift */,
-			);
-			path = models;
 			sourceTree = "<group>";
 		};
 		5CCC19E321BCB87E00E25C95 /* chat */ = {
@@ -284,6 +269,53 @@
 				5CDBE94A21A1480A00F4209C /* ChatUp.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		5CF46BFE21BE19FB009E8AC8 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5CF46BFF21BE1A29009E8AC8 /* Encodable+asDictionary.swift */,
+				5CF46C0121BE1AC0009E8AC8 /* JSONEncoder+snakeCaseEncoder.swift */,
+				5CF46C0321BE1B12009E8AC8 /* JSONDecoder+snakeCaseDecoder.swift */,
+				5CF46C1A21BE62B5009E8AC8 /* UIView+cornerRadius.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		5CF46C0821BE1FC7009E8AC8 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				5CCC19F021BCC78400E25C95 /* ChatService.swift */,
+				5CF46C1221BE2751009E8AC8 /* UserInfoService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
+		5CF46C0921BE1FE1009E8AC8 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				5CF46C0A21BE22B2009E8AC8 /* DataParam.swift */,
+				5C2CAE8121BE836B0014C86B /* PusherKeys.swift */,
+				5CF46C1621BE3B99009E8AC8 /* chat-message */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		5CF46C1621BE3B99009E8AC8 /* chat-message */ = {
+			isa = PBXGroup;
+			children = (
+				5CF46C0E21BE2695009E8AC8 /* ChatMessage.swift */,
+				5CF46C1421BE3B65009E8AC8 /* ChatMessageKind.swift */,
+				5CF46C1021BE26C4009E8AC8 /* ChatMessageSender.swift */,
+			);
+			path = "chat-message";
+			sourceTree = "<group>";
+		};
+		5CF46C1921BE6127009E8AC8 /* custom */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = custom;
 			sourceTree = "<group>";
 		};
 		A3716BC7E90198B2E06FE280 /* Pods */ = {
@@ -364,10 +396,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CF46C1821BE5DDD009E8AC8 /* Colors.xcassets in Resources */,
 				5C6E92FF21BC8E28005FECCA /* staging.xcconfig in Resources */,
+				5C2CAE8021BE82C20014C86B /* pusher_keys.json in Resources */,
 				5C6E930021BC8E28005FECCA /* production.xcconfig in Resources */,
 				5C6E932921BC991C005FECCA /* RootViewController.xib in Resources */,
-				5CCC19E221BCA8D000E25C95 /* pusher_credentials.json in Resources */,
 				5C6E930121BC8E28005FECCA /* Assets.xcassets in Resources */,
 				5C6E930221BC8E28005FECCA /* LaunchScreen.storyboard in Resources */,
 				5CCC19E721BCB89700E25C95 /* ChatViewController.xib in Resources */,
@@ -441,28 +474,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CF46C1321BE2751009E8AC8 /* UserInfoService.swift in Sources */,
 				5C6E92FA21BC8E28005FECCA /* Defaults.swift in Sources */,
+				5C2CAE8221BE836B0014C86B /* PusherKeys.swift in Sources */,
 				5C6E932C21BC992C005FECCA /* RootBuilder.swift in Sources */,
 				5C6E92F821BC8E28005FECCA /* APIAuthType.swift in Sources */,
 				5C6E931921BC944B005FECCA /* CreatedFromNib.swift in Sources */,
+				5CF46C1121BE26C4009E8AC8 /* ChatMessageSender.swift in Sources */,
 				5C6E92FB21BC8E28005FECCA /* AppDelegate.swift in Sources */,
 				5CCC19E921BCB8A000E25C95 /* ChatBuilder.swift in Sources */,
+				5CF46C0221BE1AC0009E8AC8 /* JSONEncoder+snakeCaseEncoder.swift in Sources */,
 				5C6E933121BC9966005FECCA /* BuilderType.swift in Sources */,
-				5C07CA1921BCF3640067AAF9 /* ChatMessage.swift in Sources */,
 				5C6E932F21BC995C005FECCA /* ServiceType.swift in Sources */,
+				5CF46C0021BE1A29009E8AC8 /* Encodable+asDictionary.swift in Sources */,
 				5C6E92F721BC8E28005FECCA /* Provider+refreshTokenAndRetry.swift in Sources */,
-				5CCC19ED21BCBD1300E25C95 /* RouterType.swift in Sources */,
 				5C6E92F921BC8E28005FECCA /* Keychain.swift in Sources */,
+				5CF46C0B21BE22B2009E8AC8 /* DataParam.swift in Sources */,
+				5CF46C1B21BE62B5009E8AC8 /* UIView+cornerRadius.swift in Sources */,
 				5C6E92FC21BC8E28005FECCA /* ApiError.swift in Sources */,
 				5C6E92F621BC8E28005FECCA /* Provider+requestDecodable.swift in Sources */,
 				5C6E92F521BC8E28005FECCA /* ResultType.swift in Sources */,
 				5CCC19F221BCCD7500E25C95 /* RootViewController.swift in Sources */,
+				5CF46C0F21BE2695009E8AC8 /* ChatMessage.swift in Sources */,
 				5C6E92F321BC8E28005FECCA /* Provider.swift in Sources */,
 				5CCC19F121BCC78400E25C95 /* ChatService.swift in Sources */,
+				5CF46C1521BE3B65009E8AC8 /* ChatMessageKind.swift in Sources */,
 				5C6E92FD21BC8E28005FECCA /* Config.swift in Sources */,
 				5C6E92F421BC8E28005FECCA /* API.swift in Sources */,
+				5CF46C0421BE1B12009E8AC8 /* JSONDecoder+snakeCaseDecoder.swift in Sources */,
 				5C6E933321BC998B005FECCA /* ViewType.swift in Sources */,
-				5C6E933921BCA1C2005FECCA /* PusherCredentials.swift in Sources */,
 				5CCC19E621BCB89700E25C95 /* ChatViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -532,7 +572,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -544,12 +584,13 @@
 		};
 		5CDBE96F21A14C3B00F4209C /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 806F17B4E514556546038194 /* Pods-ChatUp.development.xcconfig */;
+			baseConfigurationReference = 5C6E92E521BC8E27005FECCA /* development.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PGXASBAT5S;
+				DEVELOPMENT_TEAM = 34CMTG6FJ9;
 				INFOPLIST_FILE = "$(SRCROOT)/ChatUp/supporting-files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -613,7 +654,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -625,12 +666,13 @@
 		};
 		5CDBE97121A14C4100F4209C /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5C1B554C249294538DF40718 /* Pods-ChatUp.staging.xcconfig */;
+			baseConfigurationReference = 5C6E92E621BC8E27005FECCA /* staging.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PGXASBAT5S;
+				DEVELOPMENT_TEAM = 34CMTG6FJ9;
 				INFOPLIST_FILE = "$(SRCROOT)/ChatUp/supporting-files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -688,7 +730,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -700,12 +742,13 @@
 		};
 		5CDBE97321A14C4600F4209C /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3EA6B311978F28A426D45125 /* Pods-ChatUp.production.xcconfig */;
+			baseConfigurationReference = 5C6E92E721BC8E27005FECCA /* production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PGXASBAT5S;
+				DEVELOPMENT_TEAM = 34CMTG6FJ9;
 				INFOPLIST_FILE = "$(SRCROOT)/ChatUp/supporting-files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

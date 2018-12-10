@@ -9,9 +9,12 @@
 import Foundation
 
 class ChatBuilder: BuilderType<ChatViewController> {
-    
+
     override func build() -> ChatViewController {
-        view.pushService = ChatService()
+		let userInfoService = UserInfoService.default
+		let credentials = PusherKeys.default
+		view.userInfoService = userInfoService
+		view.chatService = ChatService(Provider.default, withUserInfoService: userInfoService, andCredentials: credentials, toService: view)
         return view
     }
     

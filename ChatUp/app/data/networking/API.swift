@@ -11,7 +11,7 @@ import Moya
 
 enum API {
     case refreshToken
-    case sample
+    case sendMessage(ChatMessage, Int)
 }
 
 extension API: TargetType {
@@ -22,42 +22,43 @@ extension API: TargetType {
     
     var path: String {
         switch self {
-        case .sample:
-            return "/sample"
         case .refreshToken:
             return "/refresh"
-        }
+		case .sendMessage(_, let channelId):
+			return "/channel/\(channelId)/messages"
+		}
     }
     
     var method: Moya.Method {
         switch self {
-        case .sample:
-            return .get
         case .refreshToken:
             return .post
-        }
+		case .sendMessage:
+			return .post
+		}
     }
     
     var sampleData: Data {
         switch self {
-        case .sample:
-            return "{\"message\": \"Hello World!\"}".data(using: .utf8)!
-        case .refreshToken:
+        case .refreshToken, .sendMessage:
             return "{\"refreshToken\": \"123456\"}".data(using: .utf8)!
-        }
+		}
     }
     
     var task: Task {
         switch self {
-        case .sample:
-            return .requestPlain
         case .refreshToken:
             return .requestPlain
-        }
+		case .sendMessage(let params, _):
+			return .requestCustomJSONEncodable(params, encoder: JSONEncoder.snakeCaseEncoder)
+		}
     }
     
     var headers: [String : String]? {
-        return [self.auth.key: self.auth.value]
+        return [
+			"Content-Type": "application/json"]
+//			self.auth.key: self.auth.value
+//		]
     }
     
 }
@@ -68,16 +69,14 @@ extension API {
 
     var auth: APIAuthType {
         switch self {
-        case .sample:
-            return .none
-        case .refreshToken:
+        case .refreshToken, .sendMessage:
             return .none
         }
     }
     
     var needsToRefreshToken: Bool {
         switch self {
-        case .sample, .refreshToken:
+        case .refreshToken, .sendMessage:
             return false
         }
     }

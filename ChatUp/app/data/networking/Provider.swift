@@ -31,7 +31,7 @@ class Provider: MoyaProvider<API> {
         let serverTrust = ServerTrustPolicyManager(policies: [host: .disableEvaluation])
         let manager = Manager(configuration: sessionConfig, serverTrustPolicyManager: serverTrust)
         
-        let plugins: [PluginType] = [NetworkLoggerPlugin(verbose: true, cURL: true)]
+        let plugins: [PluginType] = [NetworkLoggerPlugin(verbose: true, cURL: false)]
         
         switch level {
         case .default:
