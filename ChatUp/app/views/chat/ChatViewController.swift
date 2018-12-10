@@ -40,7 +40,14 @@ class ChatViewController: UIViewController, CreatedFromNib {
 	}
 
 	private func initUserNameLabel() {
-		self.userNameLabel.text = userInfoService?.userName ?? "unknown"
+		userNameLabel.text = userInfoService?.userName ?? "unknown"
+	}
+
+	private func initChatTableView() {
+		chatTableView.registerCustomCell(LeftChatMessageTableViewCell.self)
+		chatTableView.registerCustomCell(RightChatMessageTableViewCell.self)
+		chatTableView.delegate = self
+		chatTableView.dataSource = self
 	}
     
     private func initMessageTextView() {
@@ -84,6 +91,18 @@ extension ChatViewController: UITextViewDelegate {
         textView.isScrollEnabled = newSize.height >= messageTextViewMaxHeight
     }
     
+}
+
+extension ChatViewController: UITableViewDataSource {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return o
+	}
+
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		return
+	}
+
+
 }
 
 extension ChatViewController: ChatServiceable {

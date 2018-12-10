@@ -10,6 +10,12 @@
 		42B8FF0CDB6F24FEB8E8A7A1 /* Pods_ChatUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261A11F2AFC4727268D7137D /* Pods_ChatUp.framework */; };
 		5C2CAE8021BE82C20014C86B /* pusher_keys.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C2CAE7F21BE82C20014C86B /* pusher_keys.json */; };
 		5C2CAE8221BE836B0014C86B /* PusherKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2CAE8121BE836B0014C86B /* PusherKeys.swift */; };
+		5C2CAE8A21BE847B0014C86B /* RightChatMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2CAE8821BE847B0014C86B /* RightChatMessageTableViewCell.swift */; };
+		5C2CAE8B21BE847B0014C86B /* RightChatMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2CAE8921BE847B0014C86B /* RightChatMessageTableViewCell.xib */; };
+		5C2CAE9121BE84A30014C86B /* LeftChatMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2CAE8F21BE84A30014C86B /* LeftChatMessageTableViewCell.swift */; };
+		5C2CAE9221BE84A30014C86B /* LeftChatMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2CAE9021BE84A30014C86B /* LeftChatMessageTableViewCell.xib */; };
+		5C2CAE9621BE88F70014C86B /* UITableView+registerCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2CAE9521BE88F70014C86B /* UITableView+registerCustomCell.swift */; };
+		5C2F437621BE8CE900A10B38 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F437521BE8CE900A10B38 /* CustomCell.swift */; };
 		5C6E92F321BC8E28005FECCA /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E92D621BC8E27005FECCA /* Provider.swift */; };
 		5C6E92F421BC8E28005FECCA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E92D721BC8E27005FECCA /* API.swift */; };
 		5C6E92F521BC8E28005FECCA /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E92D921BC8E27005FECCA /* ResultType.swift */; };
@@ -55,6 +61,12 @@
 		5C1B554C249294538DF40718 /* Pods-ChatUp.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatUp.staging.xcconfig"; path = "Pods/Target Support Files/Pods-ChatUp/Pods-ChatUp.staging.xcconfig"; sourceTree = "<group>"; };
 		5C2CAE7F21BE82C20014C86B /* pusher_keys.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = pusher_keys.json; sourceTree = "<group>"; };
 		5C2CAE8121BE836B0014C86B /* PusherKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PusherKeys.swift; sourceTree = "<group>"; };
+		5C2CAE8821BE847B0014C86B /* RightChatMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightChatMessageTableViewCell.swift; sourceTree = "<group>"; };
+		5C2CAE8921BE847B0014C86B /* RightChatMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RightChatMessageTableViewCell.xib; sourceTree = "<group>"; };
+		5C2CAE8F21BE84A30014C86B /* LeftChatMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftChatMessageTableViewCell.swift; sourceTree = "<group>"; };
+		5C2CAE9021BE84A30014C86B /* LeftChatMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeftChatMessageTableViewCell.xib; sourceTree = "<group>"; };
+		5C2CAE9521BE88F70014C86B /* UITableView+registerCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+registerCustomCell.swift"; sourceTree = "<group>"; };
+		5C2F437521BE8CE900A10B38 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		5C6E92D621BC8E27005FECCA /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		5C6E92D721BC8E27005FECCA /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		5C6E92D921BC8E27005FECCA /* ResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
@@ -109,6 +121,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C2CAE8C21BE84800014C86B /* ChatMessageTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5C2CAE8E21BE84920014C86B /* right */,
+				5C2CAE8D21BE848B0014C86B /* left */,
+			);
+			path = ChatMessageTableViewCell;
+			sourceTree = "<group>";
+		};
+		5C2CAE8D21BE848B0014C86B /* left */ = {
+			isa = PBXGroup;
+			children = (
+				5C2CAE8F21BE84A30014C86B /* LeftChatMessageTableViewCell.swift */,
+				5C2CAE9021BE84A30014C86B /* LeftChatMessageTableViewCell.xib */,
+			);
+			path = left;
+			sourceTree = "<group>";
+		};
+		5C2CAE8E21BE84920014C86B /* right */ = {
+			isa = PBXGroup;
+			children = (
+				5C2CAE8821BE847B0014C86B /* RightChatMessageTableViewCell.swift */,
+				5C2CAE8921BE847B0014C86B /* RightChatMessageTableViewCell.xib */,
+			);
+			path = right;
+			sourceTree = "<group>";
+		};
 		5C6E92C821BC8E27005FECCA /* ChatUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +258,7 @@
 				5C6E932E21BC995C005FECCA /* ServiceType.swift */,
 				5C6E933221BC998B005FECCA /* ViewType.swift */,
 				5C6E931821BC944B005FECCA /* CreatedFromNib.swift */,
+				5C2F437521BE8CE900A10B38 /* CustomCell.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -278,6 +318,7 @@
 				5CF46C0121BE1AC0009E8AC8 /* JSONEncoder+snakeCaseEncoder.swift */,
 				5CF46C0321BE1B12009E8AC8 /* JSONDecoder+snakeCaseDecoder.swift */,
 				5CF46C1A21BE62B5009E8AC8 /* UIView+cornerRadius.swift */,
+				5C2CAE9521BE88F70014C86B /* UITableView+registerCustomCell.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -314,6 +355,7 @@
 		5CF46C1921BE6127009E8AC8 /* custom */ = {
 			isa = PBXGroup;
 			children = (
+				5C2CAE8C21BE84800014C86B /* ChatMessageTableViewCell */,
 			);
 			path = custom;
 			sourceTree = "<group>";
@@ -400,11 +442,13 @@
 				5C6E92FF21BC8E28005FECCA /* staging.xcconfig in Resources */,
 				5C2CAE8021BE82C20014C86B /* pusher_keys.json in Resources */,
 				5C6E930021BC8E28005FECCA /* production.xcconfig in Resources */,
+				5C2CAE8B21BE847B0014C86B /* RightChatMessageTableViewCell.xib in Resources */,
 				5C6E932921BC991C005FECCA /* RootViewController.xib in Resources */,
 				5C6E930121BC8E28005FECCA /* Assets.xcassets in Resources */,
 				5C6E930221BC8E28005FECCA /* LaunchScreen.storyboard in Resources */,
 				5CCC19E721BCB89700E25C95 /* ChatViewController.xib in Resources */,
 				5C6E92FE21BC8E28005FECCA /* development.xcconfig in Resources */,
+				5C2CAE9221BE84A30014C86B /* LeftChatMessageTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +520,7 @@
 			files = (
 				5CF46C1321BE2751009E8AC8 /* UserInfoService.swift in Sources */,
 				5C6E92FA21BC8E28005FECCA /* Defaults.swift in Sources */,
+				5C2F437621BE8CE900A10B38 /* CustomCell.swift in Sources */,
 				5C2CAE8221BE836B0014C86B /* PusherKeys.swift in Sources */,
 				5C6E932C21BC992C005FECCA /* RootBuilder.swift in Sources */,
 				5C6E92F821BC8E28005FECCA /* APIAuthType.swift in Sources */,
@@ -485,13 +530,16 @@
 				5CCC19E921BCB8A000E25C95 /* ChatBuilder.swift in Sources */,
 				5CF46C0221BE1AC0009E8AC8 /* JSONEncoder+snakeCaseEncoder.swift in Sources */,
 				5C6E933121BC9966005FECCA /* BuilderType.swift in Sources */,
+				5C2CAE9621BE88F70014C86B /* UITableView+registerCustomCell.swift in Sources */,
 				5C6E932F21BC995C005FECCA /* ServiceType.swift in Sources */,
 				5CF46C0021BE1A29009E8AC8 /* Encodable+asDictionary.swift in Sources */,
 				5C6E92F721BC8E28005FECCA /* Provider+refreshTokenAndRetry.swift in Sources */,
 				5C6E92F921BC8E28005FECCA /* Keychain.swift in Sources */,
 				5CF46C0B21BE22B2009E8AC8 /* DataParam.swift in Sources */,
+				5C2CAE9121BE84A30014C86B /* LeftChatMessageTableViewCell.swift in Sources */,
 				5CF46C1B21BE62B5009E8AC8 /* UIView+cornerRadius.swift in Sources */,
 				5C6E92FC21BC8E28005FECCA /* ApiError.swift in Sources */,
+				5C2CAE8A21BE847B0014C86B /* RightChatMessageTableViewCell.swift in Sources */,
 				5C6E92F621BC8E28005FECCA /* Provider+requestDecodable.swift in Sources */,
 				5C6E92F521BC8E28005FECCA /* ResultType.swift in Sources */,
 				5CCC19F221BCCD7500E25C95 /* RootViewController.swift in Sources */,
