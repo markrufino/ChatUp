@@ -19,6 +19,8 @@
 		5C2F438421BF619700A10B38 /* StringChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F438321BF619700A10B38 /* StringChatMessage.swift */; };
 		5C2F438621BF638500A10B38 /* ChatMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F438521BF638500A10B38 /* ChatMessageViewModel.swift */; };
 		5C2F438921BF7C3B00A10B38 /* MockChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F438821BF7C3B00A10B38 /* MockChatService.swift */; };
+		5C60C6D121BF9D17008DE2AE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C60C6CF21BF9D17008DE2AE /* LoginViewController.swift */; };
+		5C60C6D221BF9D17008DE2AE /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C60C6D021BF9D17008DE2AE /* LoginViewController.xib */; };
 		5C6E92F321BC8E28005FECCA /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E92D621BC8E27005FECCA /* Provider.swift */; };
 		5C6E92F421BC8E28005FECCA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E92D721BC8E27005FECCA /* API.swift */; };
 		5C6E92F521BC8E28005FECCA /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E92D921BC8E27005FECCA /* ResultType.swift */; };
@@ -72,6 +74,8 @@
 		5C2F438321BF619700A10B38 /* StringChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringChatMessage.swift; sourceTree = "<group>"; };
 		5C2F438521BF638500A10B38 /* ChatMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageViewModel.swift; sourceTree = "<group>"; };
 		5C2F438821BF7C3B00A10B38 /* MockChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChatService.swift; sourceTree = "<group>"; };
+		5C60C6CF21BF9D17008DE2AE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5C60C6D021BF9D17008DE2AE /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		5C6E92D621BC8E27005FECCA /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		5C6E92D721BC8E27005FECCA /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		5C6E92D921BC8E27005FECCA /* ResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
@@ -159,6 +163,15 @@
 				5C2F438821BF7C3B00A10B38 /* MockChatService.swift */,
 			);
 			path = mocks;
+			sourceTree = "<group>";
+		};
+		5C60C6CE21BF9D01008DE2AE /* login */ = {
+			isa = PBXGroup;
+			children = (
+				5C60C6CF21BF9D17008DE2AE /* LoginViewController.swift */,
+				5C60C6D021BF9D17008DE2AE /* LoginViewController.xib */,
+			);
+			path = login;
 			sourceTree = "<group>";
 		};
 		5C6E92C821BC8E27005FECCA /* ChatUp */ = {
@@ -280,6 +293,7 @@
 		5C6E932521BC9904005FECCA /* views */ = {
 			isa = PBXGroup;
 			children = (
+				5C60C6CE21BF9D01008DE2AE /* login */,
 				5CF46C1921BE6127009E8AC8 /* custom */,
 				5CCC19E321BCB87E00E25C95 /* chat */,
 				5C6E932A21BC991F005FECCA /* root */,
@@ -460,6 +474,7 @@
 				5C6E932921BC991C005FECCA /* RootViewController.xib in Resources */,
 				5C6E930121BC8E28005FECCA /* Assets.xcassets in Resources */,
 				5C6E930221BC8E28005FECCA /* LaunchScreen.storyboard in Resources */,
+				5C60C6D221BF9D17008DE2AE /* LoginViewController.xib in Resources */,
 				5CCC19E721BCB89700E25C95 /* ChatViewController.xib in Resources */,
 				5C6E92FE21BC8E28005FECCA /* development.xcconfig in Resources */,
 				5C2CAE9221BE84A30014C86B /* LeftChatMessageTableViewCell.xib in Resources */,
@@ -556,6 +571,7 @@
 				5C2CAE9121BE84A30014C86B /* LeftChatMessageTableViewCell.swift in Sources */,
 				5CF46C1B21BE62B5009E8AC8 /* UIView+cornerRadius.swift in Sources */,
 				5C6E92FC21BC8E28005FECCA /* ApiError.swift in Sources */,
+				5C60C6D121BF9D17008DE2AE /* LoginViewController.swift in Sources */,
 				5C2CAE8A21BE847B0014C86B /* RightChatMessageTableViewCell.swift in Sources */,
 				5C6E92F621BC8E28005FECCA /* Provider+requestDecodable.swift in Sources */,
 				5C6E92F521BC8E28005FECCA /* ResultType.swift in Sources */,

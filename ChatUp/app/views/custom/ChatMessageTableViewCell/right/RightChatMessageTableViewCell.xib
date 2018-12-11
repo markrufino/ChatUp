@@ -20,24 +20,24 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4OV-fb-Dlz">
-                        <rect key="frame" x="134" y="2" width="184" height="51.5"/>
+                        <rect key="frame" x="118" y="2" width="200" height="51.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a simple chat message from the user." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIe-TI-WE3">
-                                <rect key="frame" x="2" y="2" width="180" height="47.5"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rUA-BR-cez">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="51.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="oxI-y4-YBW"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="ZND-8p-nJF"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="mIe-TI-WE3" secondAttribute="bottom" constant="2" id="1mR-hu-vYO"/>
-                            <constraint firstItem="mIe-TI-WE3" firstAttribute="top" secondItem="4OV-fb-Dlz" secondAttribute="top" constant="2" id="3Ry-TS-fiT"/>
-                            <constraint firstItem="mIe-TI-WE3" firstAttribute="leading" secondItem="4OV-fb-Dlz" secondAttribute="leading" constant="2" id="6xQ-vu-j01"/>
-                            <constraint firstAttribute="trailing" secondItem="mIe-TI-WE3" secondAttribute="trailing" constant="2" id="klg-Y5-1rg"/>
+                            <constraint firstItem="rUA-BR-cez" firstAttribute="top" secondItem="4OV-fb-Dlz" secondAttribute="top" id="a9B-Ub-f71"/>
+                            <constraint firstAttribute="trailing" secondItem="rUA-BR-cez" secondAttribute="trailing" id="bfd-go-BG2"/>
+                            <constraint firstAttribute="bottom" secondItem="rUA-BR-cez" secondAttribute="bottom" id="jsR-1L-5z2"/>
+                            <constraint firstItem="rUA-BR-cez" firstAttribute="leading" secondItem="4OV-fb-Dlz" secondAttribute="leading" id="tPh-yB-TVC"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -54,7 +54,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="messageLabel" destination="mIe-TI-WE3" id="DIA-LM-KtN"/>
+                <outlet property="messageLabel" destination="rUA-BR-cez" id="hdZ-xK-Iz5"/>
             </connections>
             <point key="canvasLocation" x="137.59999999999999" y="153.82308845577214"/>
         </tableViewCell>

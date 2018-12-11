@@ -21,24 +21,24 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6bL-2M-nfE">
-                        <rect key="frame" x="2" y="2" width="184" height="60.5"/>
+                        <rect key="frame" x="2" y="2" width="200" height="60.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a simple chat message from the user." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFG-d5-ALp">
-                                <rect key="frame" x="2" y="2" width="180" height="56.5"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TFh-iy-6vQ">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="60.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="4uQ-jb-Etv"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="5P8-H2-yMo"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" name="PRIMARY"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="uFG-d5-ALp" secondAttribute="bottom" constant="2" id="EYo-35-zGv"/>
-                            <constraint firstItem="uFG-d5-ALp" firstAttribute="top" secondItem="6bL-2M-nfE" secondAttribute="top" constant="2" id="e8l-Bh-fGk"/>
-                            <constraint firstItem="uFG-d5-ALp" firstAttribute="leading" secondItem="6bL-2M-nfE" secondAttribute="leading" constant="2" id="nwl-Oh-uPf"/>
-                            <constraint firstAttribute="trailing" secondItem="uFG-d5-ALp" secondAttribute="trailing" constant="2" id="tZ7-0p-nIz"/>
+                            <constraint firstItem="TFh-iy-6vQ" firstAttribute="top" secondItem="6bL-2M-nfE" secondAttribute="top" id="QNM-ib-9m9"/>
+                            <constraint firstAttribute="bottom" secondItem="TFh-iy-6vQ" secondAttribute="bottom" id="Vfe-3h-LHB"/>
+                            <constraint firstAttribute="trailing" secondItem="TFh-iy-6vQ" secondAttribute="trailing" id="aHy-Yp-HPf"/>
+                            <constraint firstItem="TFh-iy-6vQ" firstAttribute="leading" secondItem="6bL-2M-nfE" secondAttribute="leading" id="l4B-cg-iKU"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -66,7 +66,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="messageLabel" destination="uFG-d5-ALp" id="emn-dU-5fu"/>
+                <outlet property="messageLabel" destination="TFh-iy-6vQ" id="FaJ-Bv-fuM"/>
                 <outlet property="senderNameLabel" destination="tsz-7u-Ya8" id="gbg-5Z-fHz"/>
             </connections>
             <point key="canvasLocation" x="-1.6000000000000001" y="102.99850074962519"/>

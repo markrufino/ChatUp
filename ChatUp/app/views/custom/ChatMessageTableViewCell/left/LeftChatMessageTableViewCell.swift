@@ -12,11 +12,12 @@ class LeftChatMessageTableViewCell: UITableViewCell, CustomCell {
 
 	static let identifier = "LeftChatMessageTableViewCell"
 
-	@IBOutlet weak var messageLabel: UILabel!
+	@IBOutlet weak var messageLabel: UITextView!
 	@IBOutlet weak var senderNameLabel: UILabel!
-	
+
 	override func awakeFromNib() {
         super.awakeFromNib()
+		messageLabel.isEditable = false
         // Initialization code
     }
 
