@@ -14,8 +14,7 @@ class ChatBuilder: BuilderType<ChatViewController> {
 		let userInfoService = UserInfoService.default
 		let credentials = PusherKeys.default
 		view.userInfoService = userInfoService
-		view.chatService = MockChatService(serviceable: view)
-//		view.chatService = ChatService(Provider.default, withUserInfoService: userInfoService, andCredentials: credentials, toService: view)
+		view.chatService = ChatService(Provider.default, withUserInfoService: userInfoService, andCredentials: credentials, toService: view)
         return view
     }
     
