@@ -54,9 +54,11 @@ extension AppDelegate {
     }
     
     func initForFirstLaunchIfNeeded() {
-        guard !Defaults().hasInitializedFirstLaunch else { return }
+		let defaults = Defaults()
+        guard !defaults.hasInitializedFirstLaunch else { return }
         let keychain = Keychain()
         keychain.clear()
-    }
+		UIDevice.model = UIDevice.modelName
+	}
     
 }

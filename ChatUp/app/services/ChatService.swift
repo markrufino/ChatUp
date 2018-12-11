@@ -13,13 +13,13 @@ protocol ChatServicing {
 
 	func start()
 
-    func send(chatMessage: ChatMessageKind)
+    func send(chatMessage: ChatMessageType)
 
 	func stop()
     
 }
 
-protocol ChatServiceable {
+protocol ChatServiceable: AnyObject {
     
     func chatServiceSuccessfullyConnected()
 
@@ -27,11 +27,11 @@ protocol ChatServiceable {
     
     func chatServiceWasDisconnected()
 
-	func chatService(successfullySentMessage message: ChatMessageKind)
+	func chatService(successfullySentMessage message: ChatMessageType)
 
-	func chatService(failedToSendMessage message: ChatMessageKind)
+	func chatService(failedToSendMessage message: ChatMessageType)
 
-	func chatService(didReceiveMessage message: ChatMessageKind, fromSenderName sender: String)
+	func chatService(didReceiveMessage message: ChatMessageType, fromSenderName sender: String)
     
 }
 
@@ -56,7 +56,7 @@ class ChatService: ChatServicing {
 	init(_ provider: Provider,
 		 withUserInfoService userInfoService: UserInfoServicing,
 		 andCredentials credentials: PusherKeys,
-		 toService serviceable: ChatServiceable,
+		 servicing serviceable: ChatServiceable,
 		 inChannel channelName: String = "private-general") {
 
 		self.provider = provider
@@ -81,7 +81,7 @@ class ChatService: ChatServicing {
 		channel?.bind(eventName: ChatEvents.messageSent.stringValue, callback: messageSentEventHandler(_:))
 	}
 
-	func send(chatMessage: ChatMessageKind) {
+	func send(chatMessage: ChatMessageType) {
 		switch chatMessage {
 		case .string(let stringMessage):
 			send(stringMessage, chatMessage)
@@ -96,7 +96,7 @@ class ChatService: ChatServicing {
 	private var provider: Provider
 	private var userInfoService: UserInfoServicing
 	private var credentials: PusherKeys
-	private var serviceable: ChatServiceable
+	private weak var serviceable: ChatServiceable?
 	private var channelName: String
 	private var pusher: Pusher
 	private var channel: PusherChannel?
@@ -109,15 +109,15 @@ class ChatService: ChatServicing {
 		// default kind is string message
 		guard let body = data as? [String: Any] else { return }
 		guard let jsonData = try? JSONSerialization.data(withJSONObject: body, options: .prettyPrinted) else { return }
-		guard let chatMessage = try? JSONDecoder().decode(DataParam<StringChatMessage>.self, from: jsonData) else { return }
+		guard let chatMessage = try? JSONDecoder().decode(DataParam<StringChatMessageInbound>.self, from: jsonData) else { return }
 
 		let stringChatMessage = chatMessage.data.message
 		let senderName = chatMessage.data.sender.data.name
 
-		serviceable.chatService(didReceiveMessage: ChatMessageKind.string(stringChatMessage), fromSenderName: senderName)
+		serviceable?.chatService(didReceiveMessage: ChatMessageType.string(stringChatMessage), fromSenderName: senderName)
 	}
 
-	private func send(_ stringMessage: String, _ chatMessage: ChatMessageKind) {
+	private func send(_ stringMessage: String, _ chatMessage: ChatMessageType) {
 
 		let sender: ChatMessageSender = ChatMessageSender(fromUserInfoService: self.userInfoService)
 
@@ -126,10 +126,10 @@ class ChatService: ChatServicing {
 
 		provider.requestPlain(target: .sendMessage(message, channelId)) { (error) in
 			guard error == nil else {
-				self.serviceable.chatService(failedToSendMessage: chatMessage)
+				self.serviceable?.chatService(failedToSendMessage: chatMessage)
 				return
 			}
-			self.serviceable.chatService(successfullySentMessage: chatMessage)
+			self.serviceable?.chatService(successfullySentMessage: chatMessage)
 		}
 	}
     
@@ -141,11 +141,11 @@ extension ChatService: PusherDelegate {
 		print("Pusher Changed Connection State - old: \(old.stringValue()) -> new: \(new.stringValue())")
 		switch (old, new) {
 		case (_, .reconnecting):
-			serviceable.chatServiceReconnecting()
+			serviceable?.chatServiceReconnecting()
 		case (_, .connected):
-			serviceable.chatServiceSuccessfullyConnected()
+			serviceable?.chatServiceSuccessfullyConnected()
 		case (_, .disconnected):
-			serviceable.chatServiceWasDisconnected()
+			serviceable?.chatServiceWasDisconnected()
 		default:
 			break
 		}

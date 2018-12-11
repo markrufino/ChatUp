@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct DataParam<D: Codable>: Codable {
-	let data: D
+struct DataParam<C: Codable>: Codable {
+	let data: C
 }

@@ -1,5 +1,5 @@
 //
-//  StringChatMessage.swift
+//  StringChatMessageOutbound.swift
 //  ChatUp
 //
 //  Created by Mark D. Rufino on 12/11/2018.
@@ -7,12 +7,6 @@
 //
 
 import Foundation
-
-struct StringChatMessage: Codable {
-	let message: String
-	let sender: DataParam<ChatMessageSender>
-}
-
 
 struct StringChatMessageOutbound: Codable {
 	let message: String

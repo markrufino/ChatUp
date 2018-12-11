@@ -11,6 +11,7 @@ import Moya
 
 enum API {
     case refreshToken
+	case login(username: String, password: String)
     case sendMessage(StringChatMessageOutbound, Int)
 }
 
@@ -26,6 +27,8 @@ extension API: TargetType {
             return "/refresh"
 		case .sendMessage(_, let channelId):
 			return "/channel/\(channelId)/messages"
+		case .login:
+			return "/login"
 		}
     }
     
@@ -35,12 +38,14 @@ extension API: TargetType {
             return .post
 		case .sendMessage:
 			return .post
+		case .login:
+			return .post
 		}
     }
     
     var sampleData: Data {
         switch self {
-        case .refreshToken, .sendMessage:
+        case .refreshToken, .sendMessage, .login:
             return "{\"refreshToken\": \"123456\"}".data(using: .utf8)!
 		}
     }
@@ -51,13 +56,37 @@ extension API: TargetType {
             return .requestPlain
 		case .sendMessage(let params, _):
 			return .requestCustomJSONEncodable(params, encoder: JSONEncoder.snakeCaseEncoder)
+		case .login(let username, let password):
+			let parameters = ["credentials": ["username": username, "password": password]]
+			return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
 		}
     }
     
     var headers: [String : String]? {
-        return ["Content-Type": "application/json"]
-//			self.auth.key: self.auth.value
-//		]
+
+		let keychain = Keychain()
+		let fcmToken = keychain.fcmToken ?? "<not yet set>"
+
+		var baseHeader = ["X-Device-UDID" : UIDevice.udid,
+						  "X-Device-OS" : UIDevice.os,
+						  "X-Device-OS-Version" : UIDevice.osVersion,
+						  "X-Device-Manufacturer" : UIDevice.manufacturer,
+						  "X-Device-Model" : UIDevice.model,
+						  "X-Device-FCM-Token" : fcmToken,
+						  "X-Device-App-Version" : UIDevice.appVersion]
+
+		switch auth {
+		case .accessToken:
+			guard let accessToken = keychain.apiAccessToken else {
+				fatalError("ERROR: Attempting call an authenticated endpoint w/o an access token!")
+			}
+			baseHeader["Authorization"] = "Bearer \(accessToken)"
+			return baseHeader
+		case .none:
+			return baseHeader
+		}
+
+
     }
     
 }
@@ -68,14 +97,14 @@ extension API {
 
     var auth: APIAuthType {
         switch self {
-        case .refreshToken, .sendMessage:
+        case .refreshToken, .sendMessage, .login:
             return .none
         }
     }
     
     var needsToRefreshToken: Bool {
         switch self {
-        case .refreshToken, .sendMessage:
+        case .refreshToken, .sendMessage, .login:
             return false
         }
     }

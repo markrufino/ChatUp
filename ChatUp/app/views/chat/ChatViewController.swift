@@ -176,7 +176,7 @@ extension ChatViewController: ChatServiceable {
 		onlineStatusIndicatorView.backgroundColor = UIColor.red
 	}
 
-	func chatService(successfullySentMessage message: ChatMessageKind) {
+	func chatService(successfullySentMessage message: ChatMessageType) {
 		let chatMessageViewModel: ChatMessageViewModel
 		switch message {
 		case .string(let stringMessage):
@@ -185,11 +185,11 @@ extension ChatViewController: ChatServiceable {
 		updateTableViewWithChatMessage(chatMessageViewModel)
 	}
 
-	func chatService(failedToSendMessage message: ChatMessageKind) {
+	func chatService(failedToSendMessage message: ChatMessageType) {
 		// Failed to send message
 	}
 
-	func chatService(didReceiveMessage message: ChatMessageKind, fromSenderName sender: String) {
+	func chatService(didReceiveMessage message: ChatMessageType, fromSenderName sender: String) {
 		let chatMessageViewModel: ChatMessageViewModel
 		switch message {
 		case .string(let stringMessage):

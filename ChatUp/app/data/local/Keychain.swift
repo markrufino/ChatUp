@@ -13,6 +13,7 @@ class Keychain: KeychainSwift {
     
     enum Keys: String {
         case loginToken
+		case fcmToken
     }
     
     override init() {
@@ -31,5 +32,18 @@ class Keychain: KeychainSwift {
             self.set(k, forKey: Keys.loginToken.rawValue)
         }
     }
+
+	var fcmToken: String? {
+		get {
+			return self.get(Keys.fcmToken.rawValue)
+		}
+		set {
+			guard let k = newValue else {
+				self.delete(Keys.fcmToken.rawValue)
+				return
+			}
+			self.set(k, forKey: Keys.fcmToken.rawValue)
+		}
+	}
     
 }

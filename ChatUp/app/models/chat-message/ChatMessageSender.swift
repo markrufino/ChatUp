@@ -13,7 +13,6 @@ struct ChatMessageSender: Codable {
 	let name: String
 }
 
-
 extension ChatMessageSender {
 
 	init(fromUserInfoService userInfoService: UserInfoServicing) {

@@ -33,10 +33,10 @@ class MockChatService: ChatServicing {
 	func start() {
 	}
 
-	func send(chatMessage: ChatMessageKind) {
+	func send(chatMessage: ChatMessageType) {
 		serviceable.chatService(successfullySentMessage: chatMessage)
 		let randomResponse = responses[Int.random(in: 0 ... 3)]
-		serviceable.chatService(didReceiveMessage: ChatMessageKind.string(randomResponse), fromSenderName: "🤖 MockChatService")
+		serviceable.chatService(didReceiveMessage: ChatMessageType.string(randomResponse), fromSenderName: "🤖 MockChatService")
 	}
 
 	func stop() {
