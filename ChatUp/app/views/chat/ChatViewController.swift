@@ -49,7 +49,6 @@ class ChatViewController: UIViewController, CreatedFromNib {
 
 		chatTableView.separatorStyle = .none
 		chatTableView.rowHeight = UITableView.automaticDimension
-		chatTableView.estimatedRowHeight = 999
 		chatTableView.contentInset = UIEdgeInsets(top: 32, left: 0, bottom: 0, right: 0)
 	}
     
@@ -91,8 +90,13 @@ class ChatViewController: UIViewController, CreatedFromNib {
 	private func updateTableViewWithChatMessage(_ chatMessage: ChatMessageViewModel) {
 		chatMessages.append(chatMessage)
 		chatTableView.reloadData()
+		scrollTableToBottom()
+	}
+
+	private func scrollTableToBottom() {
+		guard !chatMessages.isEmpty else { return }
 		let lastIndexPath = IndexPath(row: chatMessages.count - 1, section: 0)
-		chatTableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: true)
+		chatTableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: false)
 	}
 
 }
@@ -105,11 +109,27 @@ extension ChatViewController: UITextViewDelegate {
         let clampedHeight = min(messageTextViewMaxHeight, max(41.0, newSize.height))
         messageTextViewHeightConstraint?.constant = clampedHeight
         textView.isScrollEnabled = newSize.height >= messageTextViewMaxHeight
+		scrollTableToBottom()
     }
     
 }
 
 extension ChatViewController: UITableViewDelegate {
+
+	func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//		guard let stringMessage = chatMessages[indexPath.row].text else {
+//			return 32.0
+//		}
+
+//		let estimatedHeight = NSString(string: stringMessage)
+//			.boundingRect(
+//				with: CGSize(width: <#T##CGFloat#>, height: CGFloat),
+//				options: NSStringDrawingOptions.usesLineFragmentOrigin,
+//				attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)],
+//				context: nil).size.height
+
+		return 100.0
+	}
 
 }
 
