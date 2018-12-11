@@ -20,10 +20,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6bL-2M-nfE">
-                        <rect key="frame" x="0.0" y="0.0" width="182" height="66"/>
+                        <rect key="frame" x="2" y="2" width="184" height="60.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a simple chat message from the user." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFG-d5-ALp">
-                                <rect key="frame" x="2" y="2" width="178" height="62"/>
+                                <rect key="frame" x="2" y="2" width="180" height="56.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="4uQ-jb-Etv"/>
                                 </constraints>
@@ -46,7 +46,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{sendername}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsz-7u-Ya8">
-                        <rect key="frame" x="0.0" y="64.5" width="80" height="14"/>
+                        <rect key="frame" x="2" y="62.5" width="80" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="HhQ-Ek-HUv"/>
                         </constraints>
@@ -56,14 +56,11 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="uFG-d5-ALp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="2" id="7DW-C0-zHW"/>
-                    <constraint firstItem="tsz-7u-Ya8" firstAttribute="top" secondItem="6bL-2M-nfE" secondAttribute="bottom" constant="-1.5" id="Egh-mw-LuT"/>
-                    <constraint firstItem="uFG-d5-ALp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="GhF-X1-l1q"/>
-                    <constraint firstItem="tsz-7u-Ya8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="OTK-hu-yBD"/>
-                    <constraint firstItem="6bL-2M-nfE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="bUu-Ou-4K9"/>
-                    <constraint firstAttribute="trailing" secondItem="uFG-d5-ALp" secondAttribute="trailing" constant="138" id="bph-Xc-qvS"/>
-                    <constraint firstItem="6bL-2M-nfE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="jrh-Rl-tH3"/>
-                    <constraint firstAttribute="bottom" secondItem="tsz-7u-Ya8" secondAttribute="bottom" id="nfj-gG-zlP"/>
+                    <constraint firstItem="tsz-7u-Ya8" firstAttribute="top" secondItem="6bL-2M-nfE" secondAttribute="bottom" id="Egh-mw-LuT"/>
+                    <constraint firstItem="tsz-7u-Ya8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="2" id="OTK-hu-yBD"/>
+                    <constraint firstItem="6bL-2M-nfE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="bUu-Ou-4K9"/>
+                    <constraint firstItem="6bL-2M-nfE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="2" id="jrh-Rl-tH3"/>
+                    <constraint firstAttribute="bottom" secondItem="tsz-7u-Ya8" secondAttribute="bottom" constant="2" id="nfj-gG-zlP"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
