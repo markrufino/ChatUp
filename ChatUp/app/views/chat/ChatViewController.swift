@@ -113,11 +113,12 @@ extension ChatViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let chatMessage = chatMessages[indexPath.row]
 		switch chatMessage.side {
-		case .left:
-			let leftSideChat = tableView.dequeueReusableCell(withIdentifier: LeftChatMessageTableViewCell.identifier, for: indexPath)
+		case .left(let senderName):
+			let leftSideChat = tableView.dequeueReusableCell(withIdentifier: LeftChatMessageTableViewCell.identifier, for: indexPath) as! LeftChatMessageTableViewCell
+			leftSideChat.senderNameLabel.text = senderName
 			return leftSideChat
 		case .right:
-			let rightSideChat = tableView.dequeueReusableCell(withIdentifier: RightChatMessageTableViewCell.identifier, for: indexPath)
+			let rightSideChat = tableView.dequeueReusableCell(withIdentifier: RightChatMessageTableViewCell.identifier, for: indexPath) as! RightChatMessageTableViewCell
 			return rightSideChat
 		}
 	}

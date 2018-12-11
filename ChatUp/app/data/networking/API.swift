@@ -55,8 +55,7 @@ extension API: TargetType {
     }
     
     var headers: [String : String]? {
-        return [
-			"Content-Type": "application/json"]
+        return ["Content-Type": "application/json"]
 //			self.auth.key: self.auth.value
 //		]
     }

@@ -77,7 +77,6 @@ class ChatService: ChatServicing {
 	func start() {
 		pusher.delegate = self
 		pusher.connect()
-
 		channel = pusher.subscribe(channelId)
 		channel?.bind(eventName: ChatEvents.messageSent.stringValue, callback: messageSentEventHandler(_:))
 	}
@@ -86,21 +85,6 @@ class ChatService: ChatServicing {
 		switch chatMessage {
 		case .string(let stringMessage):
 			send(stringMessage, chatMessage)
-		}
-	}
-
-	fileprivate func send(_ stringMessage: String, _ chatMessage: ChatMessageKind) {
-
-		let sender = ChatMessageSender(fromUserInfoService: self.userInfoService)
-		let message = StringChatMessage(message: stringMessage, sender: sender)
-		let channelId = 1 // TODO Direct here via initializer.
-
-		provider.requestPlain(target: .sendMessage(message, channelId)) { (error) in
-			guard error == nil else {
-				self.serviceable.chatService(failedToSendMessage: chatMessage)
-				return
-			}
-			self.serviceable.chatService(successfullySentMessage: chatMessage)
 		}
 	}
 
@@ -127,6 +111,21 @@ class ChatService: ChatServicing {
 		guard let jsonData = try? JSONSerialization.data(withJSONObject: body, options: .prettyPrinted) else { return }
 		guard let chatMessage = try? JSONDecoder().decode(StringChatMessage.self, from: jsonData) else { return }
 		serviceable.chatService(didReceiveMessage: ChatMessageKind.string(chatMessage.message), fromSenderName: chatMessage.sender.name)
+	}
+
+	private func send(_ stringMessage: String, _ chatMessage: ChatMessageKind) {
+
+		let sender = ChatMessageSender(fromUserInfoService: self.userInfoService)
+		let message = StringChatMessage(message: stringMessage, sender: sender)
+		let channelId = 1 // TODO Direct here via initializer.
+
+		provider.requestPlain(target: .sendMessage(message, channelId)) { (error) in
+			guard error == nil else {
+				self.serviceable.chatService(failedToSendMessage: chatMessage)
+				return
+			}
+			self.serviceable.chatService(successfullySentMessage: chatMessage)
+		}
 	}
     
 }
