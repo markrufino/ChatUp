@@ -10,4 +10,5 @@ import Foundation
 
 enum ChatMessageKind {
 	case string(String)
+//	case media(Data)  - just in case this will be supproted in the future.
 }

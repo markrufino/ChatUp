@@ -11,7 +11,7 @@ import Moya
 
 enum API {
     case refreshToken
-    case sendMessage(ChatMessage, Int)
+    case sendMessage(StringChatMessage, Int)
 }
 
 extension API: TargetType {

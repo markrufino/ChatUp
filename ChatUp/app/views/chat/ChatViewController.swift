@@ -10,9 +10,6 @@ import UIKit
 
 
 class ChatViewController: UIViewController, CreatedFromNib {
-    
-    private var messageTextViewMaxHeight: CGFloat = 132.0
-    private var messageTextViewHeightConstraint: NSLayoutConstraint?
 
 	@IBOutlet weak var userNameLabel: UILabel!
 	@IBOutlet weak var onlineStatusIndicatorView: UIView!
@@ -79,6 +76,16 @@ class ChatViewController: UIViewController, CreatedFromNib {
 		textViewDidChange(messageTextView)
 	}
 
+	// MARK: - Private
+
+	private var messageTextViewMaxHeight: CGFloat = 132.0
+	private var messageTextViewHeightConstraint: NSLayoutConstraint?
+	private var chatMessages: [ChatMessageViewModel] = []
+
+	private func updateTableViewWithChatMessage(_ chatMessage: ChatMessageViewModel) {
+
+	}
+
 }
 
 extension ChatViewController: UITextViewDelegate {
@@ -93,15 +100,27 @@ extension ChatViewController: UITextViewDelegate {
     
 }
 
+extension ChatViewController: UITableViewDelegate {
+
+}
+
 extension ChatViewController: UITableViewDataSource {
+
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return o
+		return 0
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		return
+		let chatMessage = chatMessages[indexPath.row]
+		switch chatMessage.side {
+		case .left:
+			let leftSideChat = tableView.dequeueReusableCell(withIdentifier: LeftChatMessageTableViewCell.identifier, for: indexPath)
+			return leftSideChat
+		case .right:
+			let rightSideChat = tableView.dequeueReusableCell(withIdentifier: RightChatMessageTableViewCell.identifier, for: indexPath)
+			return rightSideChat
+		}
 	}
-
 
 }
 
@@ -119,15 +138,26 @@ extension ChatViewController: ChatServiceable {
 		onlineStatusIndicatorView.backgroundColor = UIColor.red
 	}
 
-	func chatService(failedToSendMessage message: ChatMessageKind) {
+	func chatService(successfullySentMessage message: ChatMessageKind) {
+		let chatMessageViewModel: ChatMessageViewModel
+		switch message {
+		case .string(let stringMessage):
+			chatMessageViewModel = ChatMessageViewModel(withText: stringMessage, andOrMedia: nil, thatWillAppearOnThe: .right)
+		}
+		updateTableViewWithChatMessage(chatMessageViewModel)
+	}
 
+	func chatService(failedToSendMessage message: ChatMessageKind) {
+		// Failed to send message
 	}
 
 	func chatService(didReceiveMessage message: ChatMessageKind, fromSenderName sender: String) {
+		let chatMessageViewModel: ChatMessageViewModel
 		switch message {
-		case .string(let message):
-			print("\(message)")
+		case .string(let stringMessage):
+			chatMessageViewModel = ChatMessageViewModel(withText: stringMessage, andOrMedia: nil, thatWillAppearOnThe: .left(senderName: sender))
 		}
+		updateTableViewWithChatMessage(chatMessageViewModel)
 	}
 
 }

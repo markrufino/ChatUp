@@ -11,8 +11,6 @@ import PusherSwift
 
 protocol ChatServicing {
 
-	static var authMethod: AuthMethod { get }
-
 	func start()
 
     func send(chatMessage: ChatMessageKind)
@@ -28,6 +26,8 @@ protocol ChatServiceable {
 	func chatServiceReconnecting()
     
     func chatServiceWasDisconnected()
+
+	func chatService(successfullySentMessage message: ChatMessageKind)
 
 	func chatService(failedToSendMessage message: ChatMessageKind)
 
@@ -53,23 +53,22 @@ enum ChatEvents {
 
 class ChatService: ChatServicing {
 
-	static var authMethod: AuthMethod = .noMethod
-
 	init(_ provider: Provider,
 		 withUserInfoService userInfoService: UserInfoServicing,
 		 andCredentials credentials: PusherKeys,
 		 toService serviceable: ChatServiceable,
-		 inChannel channelId: String = "private-general") {
+		 inChannel channelName: String = "private-general") {
 
 		self.provider = provider
 		self.userInfoService = userInfoService
 		self.credentials = credentials
 		self.serviceable = serviceable
-		self.channelId = channelId
+		self.channelId = channelName
 
 		// see: https://pusher.com/docs/authenticating_users
 		self.pusher = Pusher(withAppKey: credentials.key, options: {
-			PusherClientOptions(authMethod: ChatService.authMethod, attemptToReturnJSONObject: true, host: .cluster(credentials.cluster))
+			let authMethod: AuthMethod = .inline(secret: credentials.key)
+			return PusherClientOptions(authMethod: authMethod, attemptToReturnJSONObject: true, host: .cluster(credentials.cluster))
 		}())
 	}
 
@@ -86,20 +85,22 @@ class ChatService: ChatServicing {
 	func send(chatMessage: ChatMessageKind) {
 		switch chatMessage {
 		case .string(let stringMessage):
-			process(stringMessage, chatMessage)
+			send(stringMessage, chatMessage)
 		}
 	}
 
-	fileprivate func process(_ stringMessage: String, _ chatMessage: ChatMessageKind) {
+	fileprivate func send(_ stringMessage: String, _ chatMessage: ChatMessageKind) {
+
 		let sender = ChatMessageSender(fromUserInfoService: self.userInfoService)
-		let message = ChatMessage(message: stringMessage, sender: sender)
-		let channelId = 1
+		let message = StringChatMessage(message: stringMessage, sender: sender)
+		let channelId = 1 // TODO Direct here via initializer.
 
 		provider.requestPlain(target: .sendMessage(message, channelId)) { (error) in
 			guard error == nil else {
 				self.serviceable.chatService(failedToSendMessage: chatMessage)
 				return
 			}
+			self.serviceable.chatService(successfullySentMessage: chatMessage)
 		}
 	}
 
@@ -124,7 +125,7 @@ class ChatService: ChatServicing {
 		// default kind is string message
 		guard let body = data as? [String: Any] else { return }
 		guard let jsonData = try? JSONSerialization.data(withJSONObject: body, options: .prettyPrinted) else { return }
-		guard let chatMessage = try? JSONDecoder().decode(ChatMessage.self, from: jsonData) else { return }
+		guard let chatMessage = try? JSONDecoder().decode(StringChatMessage.self, from: jsonData) else { return }
 		serviceable.chatService(didReceiveMessage: ChatMessageKind.string(chatMessage.message), fromSenderName: chatMessage.sender.name)
 	}
     
