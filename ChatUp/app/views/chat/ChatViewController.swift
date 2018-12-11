@@ -50,6 +50,11 @@ class ChatViewController: UIViewController, CreatedFromNib {
 		chatTableView.separatorStyle = .none
 		chatTableView.rowHeight = UITableView.automaticDimension
 		chatTableView.estimatedRowHeight = 999
+
+		DispatchQueue.main.async {
+			self.chatTableView.contentOffset.y = 32
+		}
+
 	}
     
     private func initMessageTextView() {
@@ -123,14 +128,16 @@ extension ChatViewController: UITableViewDataSource {
 			let leftSideChat = tableView.dequeueReusableCell(withIdentifier: LeftChatMessageTableViewCell.identifier, for: indexPath) as! LeftChatMessageTableViewCell
 			leftSideChat.senderNameLabel.text = senderName
 			if let stringMessage = chatMessage.text {
-				leftSideChat.textLabel?.text = stringMessage
+				leftSideChat.messageLabel?.text = stringMessage
 			}
+			leftSideChat.selectionStyle = .none
 			return leftSideChat
 		case .right:
 			let rightSideChat = tableView.dequeueReusableCell(withIdentifier: RightChatMessageTableViewCell.identifier, for: indexPath) as! RightChatMessageTableViewCell
 			if let stringMessage = chatMessage.text {
-				rightSideChat.textLabel?.text = stringMessage
+				rightSideChat.messageLabel?.text = stringMessage
 			}
+			rightSideChat.selectionStyle = .none
 			return rightSideChat
 		}
 	}

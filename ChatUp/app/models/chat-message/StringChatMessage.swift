@@ -10,5 +10,11 @@ import Foundation
 
 struct StringChatMessage: Codable {
 	let message: String
+	let sender: DataParam<ChatMessageSender>
+}
+
+
+struct StringChatMessageOutbound: Codable {
+	let message: String
 	let sender: ChatMessageSender
 }

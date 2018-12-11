@@ -18,6 +18,7 @@
 		5C2F437621BE8CE900A10B38 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F437521BE8CE900A10B38 /* CustomCell.swift */; };
 		5C2F438421BF619700A10B38 /* StringChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F438321BF619700A10B38 /* StringChatMessage.swift */; };
 		5C2F438621BF638500A10B38 /* ChatMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F438521BF638500A10B38 /* ChatMessageViewModel.swift */; };
+		5C2F438921BF7C3B00A10B38 /* MockChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F438821BF7C3B00A10B38 /* MockChatService.swift */; };
 		5C6E92F321BC8E28005FECCA /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E92D621BC8E27005FECCA /* Provider.swift */; };
 		5C6E92F421BC8E28005FECCA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E92D721BC8E27005FECCA /* API.swift */; };
 		5C6E92F521BC8E28005FECCA /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E92D921BC8E27005FECCA /* ResultType.swift */; };
@@ -70,6 +71,7 @@
 		5C2F437521BE8CE900A10B38 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		5C2F438321BF619700A10B38 /* StringChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringChatMessage.swift; sourceTree = "<group>"; };
 		5C2F438521BF638500A10B38 /* ChatMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageViewModel.swift; sourceTree = "<group>"; };
+		5C2F438821BF7C3B00A10B38 /* MockChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChatService.swift; sourceTree = "<group>"; };
 		5C6E92D621BC8E27005FECCA /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		5C6E92D721BC8E27005FECCA /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		5C6E92D921BC8E27005FECCA /* ResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
@@ -151,6 +153,14 @@
 			path = right;
 			sourceTree = "<group>";
 		};
+		5C2F438721BF7C2A00A10B38 /* mocks */ = {
+			isa = PBXGroup;
+			children = (
+				5C2F438821BF7C3B00A10B38 /* MockChatService.swift */,
+			);
+			path = mocks;
+			sourceTree = "<group>";
+		};
 		5C6E92C821BC8E27005FECCA /* ChatUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +181,7 @@
 				5CF46BFE21BE19FB009E8AC8 /* extensions */,
 				5CF46C0921BE1FE1009E8AC8 /* models */,
 				5C6E932021BC9843005FECCA /* protocols */,
+				5C2F438721BF7C2A00A10B38 /* mocks */,
 				5CF46C0821BE1FC7009E8AC8 /* services */,
 				5C6E932521BC9904005FECCA /* views */,
 			);
@@ -540,6 +551,7 @@
 				5CF46C0021BE1A29009E8AC8 /* Encodable+asDictionary.swift in Sources */,
 				5C6E92F721BC8E28005FECCA /* Provider+refreshTokenAndRetry.swift in Sources */,
 				5C6E92F921BC8E28005FECCA /* Keychain.swift in Sources */,
+				5C2F438921BF7C3B00A10B38 /* MockChatService.swift in Sources */,
 				5CF46C0B21BE22B2009E8AC8 /* DataParam.swift in Sources */,
 				5C2CAE9121BE84A30014C86B /* LeftChatMessageTableViewCell.swift in Sources */,
 				5CF46C1B21BE62B5009E8AC8 /* UIView+cornerRadius.swift in Sources */,
