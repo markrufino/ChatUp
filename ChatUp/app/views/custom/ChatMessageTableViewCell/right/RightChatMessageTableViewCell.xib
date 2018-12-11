@@ -20,10 +20,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4OV-fb-Dlz">
-                        <rect key="frame" x="136" y="0.0" width="184" height="55.5"/>
+                        <rect key="frame" x="134" y="2" width="184" height="51.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a simple chat message from the user." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIe-TI-WE3">
-                                <rect key="frame" x="2" y="2" width="180" height="51.5"/>
+                                <rect key="frame" x="2" y="2" width="180" height="47.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="oxI-y4-YBW"/>
                                 </constraints>
@@ -47,9 +47,9 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="4OV-fb-Dlz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="6Px-FT-MgN"/>
-                    <constraint firstAttribute="trailing" secondItem="4OV-fb-Dlz" secondAttribute="trailing" id="Ovz-KY-TBf"/>
-                    <constraint firstAttribute="bottom" secondItem="4OV-fb-Dlz" secondAttribute="bottom" id="nCo-xt-tpv"/>
+                    <constraint firstItem="4OV-fb-Dlz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="6Px-FT-MgN"/>
+                    <constraint firstAttribute="trailing" secondItem="4OV-fb-Dlz" secondAttribute="trailing" constant="2" id="Ovz-KY-TBf"/>
+                    <constraint firstAttribute="bottom" secondItem="4OV-fb-Dlz" secondAttribute="bottom" constant="2" id="nCo-xt-tpv"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
