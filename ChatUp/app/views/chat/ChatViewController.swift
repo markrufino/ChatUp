@@ -50,11 +50,7 @@ class ChatViewController: UIViewController, CreatedFromNib {
 		chatTableView.separatorStyle = .none
 		chatTableView.rowHeight = UITableView.automaticDimension
 		chatTableView.estimatedRowHeight = 999
-
-		DispatchQueue.main.async {
-			self.chatTableView.contentOffset.y = 32
-		}
-
+		chatTableView.contentInset = UIEdgeInsets(top: 32, left: 0, bottom: 0, right: 0)
 	}
     
     private func initMessageTextView() {
@@ -95,6 +91,8 @@ class ChatViewController: UIViewController, CreatedFromNib {
 	private func updateTableViewWithChatMessage(_ chatMessage: ChatMessageViewModel) {
 		chatMessages.append(chatMessage)
 		chatTableView.reloadData()
+		let lastIndexPath = IndexPath(row: chatMessages.count - 1, section: 0)
+		chatTableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: true)
 	}
 
 }

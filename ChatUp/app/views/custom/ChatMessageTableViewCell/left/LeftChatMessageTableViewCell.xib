@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,11 +29,11 @@
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="4uQ-jb-Etv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666669999997" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="PRIMARY"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="uFG-d5-ALp" secondAttribute="bottom" constant="2" id="EYo-35-zGv"/>
                             <constraint firstItem="uFG-d5-ALp" firstAttribute="top" secondItem="6bL-2M-nfE" secondAttribute="top" constant="2" id="e8l-Bh-fGk"/>
@@ -71,4 +72,9 @@
             <point key="canvasLocation" x="-1.6000000000000001" y="102.99850074962519"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="PRIMARY">
+            <color red="0.25882352941176473" green="0.29411764705882354" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

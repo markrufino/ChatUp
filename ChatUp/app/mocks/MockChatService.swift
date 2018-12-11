@@ -13,7 +13,15 @@ class MockChatService: ChatServicing {
 	var responses = [
 		"Hello world!",
 		"I AM MOCK CHAT SERVICE",
-		"This\nIs\nA\nLong\nLine"
+		"This\nIs\nA\nLong\nLine",
+		"🤖 IM AM A BOT",
+		"""
+		fldsamfksmldfamsdlfamsldfmalfasmld
+		fmlsamfl
+		• A
+		• B
+		• C
+		"""
 	]
 
 	private let serviceable: ChatServiceable
@@ -27,8 +35,8 @@ class MockChatService: ChatServicing {
 
 	func send(chatMessage: ChatMessageKind) {
 		serviceable.chatService(successfullySentMessage: chatMessage)
-		let randomResponse = responses[Int.random(in: 0 ... 2)]
-		serviceable.chatService(didReceiveMessage: ChatMessageKind.string(randomResponse), fromSenderName: "MockChatService")
+		let randomResponse = responses[Int.random(in: 0 ... 3)]
+		serviceable.chatService(didReceiveMessage: ChatMessageKind.string(randomResponse), fromSenderName: "🤖 MockChatService")
 	}
 
 	func stop() {
