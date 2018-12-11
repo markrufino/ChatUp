@@ -34,6 +34,7 @@ class ChatViewController: UIViewController, CreatedFromNib {
 		initUserNameLabel()
 		initMessageTextView()
 		initOnlineStatusIndicator()
+		initChatTableView()
 	}
 
 	private func initUserNameLabel() {
@@ -45,6 +46,10 @@ class ChatViewController: UIViewController, CreatedFromNib {
 		chatTableView.registerCustomCell(RightChatMessageTableViewCell.self)
 		chatTableView.delegate = self
 		chatTableView.dataSource = self
+
+		chatTableView.separatorStyle = .none
+		chatTableView.rowHeight = UITableView.automaticDimension
+		chatTableView.estimatedRowHeight = 999
 	}
     
     private func initMessageTextView() {
@@ -83,7 +88,8 @@ class ChatViewController: UIViewController, CreatedFromNib {
 	private var chatMessages: [ChatMessageViewModel] = []
 
 	private func updateTableViewWithChatMessage(_ chatMessage: ChatMessageViewModel) {
-
+		chatMessages.append(chatMessage)
+		chatTableView.reloadData()
 	}
 
 }
@@ -107,7 +113,7 @@ extension ChatViewController: UITableViewDelegate {
 extension ChatViewController: UITableViewDataSource {
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 0
+		return chatMessages.count
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -116,9 +122,15 @@ extension ChatViewController: UITableViewDataSource {
 		case .left(let senderName):
 			let leftSideChat = tableView.dequeueReusableCell(withIdentifier: LeftChatMessageTableViewCell.identifier, for: indexPath) as! LeftChatMessageTableViewCell
 			leftSideChat.senderNameLabel.text = senderName
+			if let stringMessage = chatMessage.text {
+				leftSideChat.textLabel?.text = stringMessage
+			}
 			return leftSideChat
 		case .right:
 			let rightSideChat = tableView.dequeueReusableCell(withIdentifier: RightChatMessageTableViewCell.identifier, for: indexPath) as! RightChatMessageTableViewCell
+			if let stringMessage = chatMessage.text {
+				rightSideChat.textLabel?.text = stringMessage
+			}
 			return rightSideChat
 		}
 	}
