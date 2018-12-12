@@ -58,6 +58,9 @@
                                     <state key="normal" title="Login">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="didTapLogin:" destination="-1" eventType="touchUpInside" id="I3T-i4-o4d"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -75,9 +78,20 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wC3-WN-vhj">
+                    <rect key="frame" x="63" y="617" width="249" height="30"/>
+                    <state key="normal" title="No account yet? Tap here to register">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapRegister:" destination="-1" eventType="touchUpInside" id="Cv2-Gv-Khs"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" name="PRIMARY"/>
             <constraints>
+                <constraint firstItem="wC3-WN-vhj" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="4k7-rs-kyM"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="wC3-WN-vhj" secondAttribute="bottom" constant="20" id="6Fw-Dt-Cj3"/>
                 <constraint firstItem="g9p-MP-3Jj" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="Lyp-d8-JH1"/>
                 <constraint firstItem="g9p-MP-3Jj" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="tfG-0i-aI6"/>
             </constraints>

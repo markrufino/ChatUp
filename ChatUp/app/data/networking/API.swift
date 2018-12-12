@@ -11,7 +11,7 @@ import Moya
 
 enum API {
     case refreshToken
-	case login(username: String, password: String)
+	case login(email: String, password: String)
     case sendMessage(StringChatMessageOutbound, Int)
 }
 
@@ -56,8 +56,8 @@ extension API: TargetType {
             return .requestPlain
 		case .sendMessage(let params, _):
 			return .requestCustomJSONEncodable(params, encoder: JSONEncoder.snakeCaseEncoder)
-		case .login(let username, let password):
-			let parameters = ["credentials": ["username": username, "password": password]]
+		case .login(let email, let password):
+			let parameters = ["credentials": ["email": email, "password": password]]
 			return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
 		}
     }

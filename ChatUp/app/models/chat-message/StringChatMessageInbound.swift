@@ -8,7 +8,9 @@
 
 import Foundation
 
-struct StringChatMessageInbound: Codable {
+typealias StringChatMessageInbound = DataParam<StringChatMessageInboundMeta>
+
+struct StringChatMessageInboundMeta: Codable {
 	var message: String
 	var sender: DataParam<ChatMessageSender>
 }

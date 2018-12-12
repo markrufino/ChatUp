@@ -33,6 +33,10 @@ class LoginViewController: UIViewController, CreatedFromNib {
 		loginService?.login(withEmail: email, andPassword: password)
 	}
 
+	@IBAction func didTapRegister(_ sender: Any) {
+
+	}
+
 	private func validateAndGetEmail() -> String? {
 		guard let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return nil }
 		guard email != "" else { return nil  }

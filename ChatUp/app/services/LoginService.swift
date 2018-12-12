@@ -30,7 +30,14 @@ class LoginService: LoginServicing {
 	}
 
 	func login(withEmail email: String, andPassword password: String) {
-		
+		provider.requestDecodable(target: .login(email: email, password: password)) { (result: ResultType<User>) in
+			switch result {
+			case .success(let user):
+				self.serviceable?.loginSuccess()
+			case .failed(let error):
+				self.serviceable?.loginFailed(withError: error.localizedDescription)
+			}
+		}
 	}
 
 	// MARK: - Private

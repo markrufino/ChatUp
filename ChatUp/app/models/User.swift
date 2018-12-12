@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias <#type name#> = <#type expression#>
+
 struct User: Decodable {
 	let id: Int
 	let name: String

@@ -109,7 +109,7 @@ class ChatService: ChatServicing {
 		// default kind is string message
 		guard let body = data as? [String: Any] else { return }
 		guard let jsonData = try? JSONSerialization.data(withJSONObject: body, options: .prettyPrinted) else { return }
-		guard let chatMessage = try? JSONDecoder().decode(DataParam<StringChatMessageInbound>.self, from: jsonData) else { return }
+		guard let chatMessage = try? JSONDecoder().decode(StringChatMessageInbound.self, from: jsonData) else { return }
 
 		let stringChatMessage = chatMessage.data.message
 		let senderName = chatMessage.data.sender.data.name
