@@ -22,8 +22,15 @@ extension Provider {
 	func request(target: API, handler: @escaping ((ApiError?) -> Void)) {
 		self.request(target) { (result) in
 			switch result {
-			case .success:
-				handler(nil)
+			case .success(let response):
+
+				if response.statusCode >= 400 {
+
+				} else {
+					handler(nil)
+				}
+
+
 			case .failure(let error):
 
 				guard case .statusCode(let errorResponse) = error else {
@@ -48,14 +55,27 @@ extension Provider {
         self.request(target) { (result) in
             
             var resultType: ResultType<D>!
-            
+
             switch result {
                 
-            case .success(let value):
+            case .success(let response):
 
-                let decodableJSON = try! value.map(D.self, using: decoder, failsOnEmptyData: true)
-                resultType = ResultType<D>.success(decodableJSON)
-                
+
+				do {
+
+					let decodable = try response.filterSuccessfulStatusCodes()
+					let decodableJSON = try! decodable.map(D.self, using: decoder, failsOnEmptyData: true)
+					resultType = ResultType<D>.success(decodableJSON)
+
+				} catch {
+
+					if let err = error as? MoyaError {
+						print(err.response?.statusCode)
+						print("")
+					}
+
+				}
+
             case .failure(let error):
 
                 guard case .statusCode(let errorResponse) = error else {

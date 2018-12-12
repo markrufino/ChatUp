@@ -91,10 +91,6 @@ extension API: TargetType {
 
 		}
     }
-
-	var validationType: Moya.ValidationType {
-		return .successCodes
-	}
     
     var headers: [String : String]? {
 
