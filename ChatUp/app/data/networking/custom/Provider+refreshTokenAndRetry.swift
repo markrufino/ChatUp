@@ -8,34 +8,56 @@
 
 import Foundation
 
-struct RefreshTokenResponse: Decodable {
-    let refreshToken: String
-}
-
 extension Provider {
 
-	func requestTokenAndRetry(target: API, keychain: Keychain = Keychain(), plainHandler: @escaping ((ApiError?) -> Void)) {
-		self.requestDecodable(target: .refreshToken) { (r: ResultType<RefreshTokenResponse>) in
-			switch r {
-			case .success(let response):
-				keychain.apiAccessToken = response.refreshToken
-				self.request(target: target, handler: plainHandler)
-			case .failed(let error):
-				print(error.localizedDescription)
+	func requestTokenAndRetry(target: API, keychain: Keychain = Keychain(), handler: @escaping ((ApiError?) -> Void)) {
+
+		self.request(.refreshToken) { (result) in
+			switch result {
+			case .success(let value):
+				if let header = value.response?.allHeaderFields {
+					if let newAccessToken = header[APIAuthType.accessToken.key] {
+						keychain.apiAccessToken = newAccessToken as? String
+					}
+					self.request(target: target, handler: handler)
+				}
+			case .failure(let error):
+				guard case .statusCode(let errorResponse) = error else {
+					handler(ApiError(message: "Non-Status Code Error"))
+					break
+				}
+
+				if let providerError = try? errorResponse.map(ApiError.self) {
+					handler(providerError)
+				}
 			}
 		}
+
 	}
     
-    func refreshTokenAndRetry<D: Decodable>(target: API, keychain: Keychain = Keychain(), decodableHandler: @escaping RequestDecodableCompletion<D>) {
-        self.requestDecodable(target: .refreshToken) { (r: ResultType<RefreshTokenResponse>) in
-            switch r {
-            case .success(let response):
-                keychain.apiAccessToken = response.refreshToken
-                self.requestDecodable(target: target, handler: decodableHandler)
-            case .failed(let error):
-                print(error.localizedDescription)
-            }
-        }
+    func refreshTokenAndRetry<D: Decodable>(target: API, keychain: Keychain = Keychain(), handler: @escaping RequestDecodableCompletion<D>) {
+
+		self.request(.refreshToken) { (result) in
+			switch result {
+			case .success(let value):
+				if let header = value.response?.allHeaderFields {
+					if let newAccessToken = header[APIAuthType.accessToken.key] {
+						keychain.apiAccessToken = newAccessToken as? String
+					}
+					self.requestDecodable(target: target, handler: handler)
+				}
+			case .failure(let error):
+				guard case .statusCode(let errorResponse) = error else {
+					handler(ResultType<D>.failed(ApiError(message: "Non-Status Code Error")))
+					break
+				}
+
+				if let providerError = try? errorResponse.map(ApiError.self) {
+					handler(ResultType<D>.failed(providerError))
+				}
+			}
+		}
+
     }
     
 }

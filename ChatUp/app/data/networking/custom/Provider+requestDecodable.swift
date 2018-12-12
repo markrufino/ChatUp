@@ -32,7 +32,7 @@ extension Provider {
 				}
 
 				if errorResponse.statusCode == 401 && target.needsToRefreshToken {
-					self.requestTokenAndRetry(target: target, plainHandler: handler)
+					self.requestTokenAndRetry(target: target, handler: handler)
 					return
 				}
 
@@ -63,7 +63,7 @@ extension Provider {
                 }
                 
                 if errorResponse.statusCode == 401 && target.needsToRefreshToken {
-                    self.refreshTokenAndRetry(target: target, decodableHandler: handler)
+                    self.refreshTokenAndRetry(target: target, handler: handler)
                     return
                 }
                 
