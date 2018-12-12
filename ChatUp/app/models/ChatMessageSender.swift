@@ -18,10 +18,15 @@ struct ChatMessageSender: Codable {
 extension ChatMessageSender {
 
 	init(fromUserInfoService userInfoService: UserInfoServicing) {
+
 		self.id = userInfoService.userId
-		self.name = userInfoService.userName
+
+		self.name = userInfoService.username
+
 		self.email = userInfoService.email
+
 		self.isOnline = userInfoService.isOnline
+
 	}
 
 }

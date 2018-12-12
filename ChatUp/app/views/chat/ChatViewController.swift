@@ -38,7 +38,7 @@ class ChatViewController: UIViewController, CreatedFromNib {
 	}
 
 	private func initUserNameLabel() {
-		userNameLabel.text = userInfoService?.userName ?? "unknown"
+		userNameLabel.text = userInfoService?.username ?? "<unknown username>"
 	}
 
 	private func initChatTableView() {

@@ -8,11 +8,11 @@
 
 import Foundation
 
-typealias UserResponse = DataResp<User>
+typealias LoginResponse = DataResp<User>
 
 struct User: Codable {
 	let id: Int
 	let name: String
 	let email: String
-	let isOnline: String
+	let isOnline: Bool
 }

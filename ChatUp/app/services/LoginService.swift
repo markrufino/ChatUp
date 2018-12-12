@@ -24,15 +24,18 @@ protocol LoginServiceable: AnyObject {
 
 class LoginService: LoginServicing {
 
-	init(withProvider provider: Provider, servicing serviceable: LoginServiceable) {
+	init(withProvider provider: Provider, andUserInfoService userInfoService: UserInfoService, servicing serviceable: LoginServiceable) {
 		self.provider = provider
+		self.userInfoService = userInfoService
 		self.serviceable = serviceable
 	}
 
 	func login(withEmail email: String, andPassword password: String) {
-		provider.requestDecodable(target: .login(email: email, password: password)) { (result: ResultType<User>) in
+		provider.requestDecodable(target: .login(email: email, password: password)) { (result: ResultType<LoginResponse>) in
 			switch result {
-			case .success(let user):
+			case .success(let value):
+				let user = value.data
+				self.userInfoService.set(username: user.name, userId: user.id, email: user.email, isOnline: user.isOnline)
 				self.serviceable?.loginSuccess()
 			case .failed(let error):
 				self.serviceable?.loginFailed(withError: error.localizedDescription)
@@ -44,6 +47,7 @@ class LoginService: LoginServicing {
 
 	private var provider: Provider
 	private weak var serviceable: LoginServiceable?
+	private var userInfoService: UserInfoServicing
 
 }
 

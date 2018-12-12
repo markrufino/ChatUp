@@ -10,14 +10,10 @@ import Foundation
 
 class Defaults {
     
-    private let internalUserDefaults = UserDefaults.standard
+    private let internalUserDefaults = UserDefaults(suiteName: Config.shared.kNamespace)
     
     enum Keys: String {
         case hasInitializedFirstLaunch
-        
-        var namespaced: String {
-            return Config.shared.kNamespace + "." + self.rawValue
-        }
     }
     
     init() {
@@ -25,10 +21,10 @@ class Defaults {
     
     var hasInitializedFirstLaunch: Bool {
         set {
-            UserDefaults.standard.set(newValue, forKey: Keys.hasInitializedFirstLaunch.namespaced)
+            UserDefaults.standard.set(newValue, forKey: Keys.hasInitializedFirstLaunch.rawValue)
         }
         get {
-            return UserDefaults.standard.bool(forKey: Keys.hasInitializedFirstLaunch.namespaced)
+            return UserDefaults.standard.bool(forKey: Keys.hasInitializedFirstLaunch.rawValue)
         }
     }
     
