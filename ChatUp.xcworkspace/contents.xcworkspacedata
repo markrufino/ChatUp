@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/markr/Desktop/developer/ios/work/ChatUp/ChatUp/app/data/networking/request_extensions/RequestResult.swift">
+   </FileRef>
+   <FileRef
       location = "group:ChatUp.xcodeproj">
    </FileRef>
    <FileRef
