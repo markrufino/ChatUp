@@ -12,7 +12,7 @@ import Moya
 enum API {
     case refreshToken
 	case login(email: String, password: String)
-    case sendMessage(StringChatMessageOutbound, Int)
+    case sendMessage(ChatMessageParams, Int)
 }
 
 extension API: TargetType {

@@ -1,5 +1,5 @@
 //
-//  DataParam.swift
+//  DataResp.swift
 //  ChatUp
 //
 //  Created by Mark D. Rufino on 12/10/2018.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct DataParam<C: Codable>: Codable {
+struct DataResp<C: Codable>: Codable {
 	let data: C
 }

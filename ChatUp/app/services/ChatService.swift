@@ -109,7 +109,7 @@ class ChatService: ChatServicing {
 		// default kind is string message
 		guard let body = data as? [String: Any] else { return }
 		guard let jsonData = try? JSONSerialization.data(withJSONObject: body, options: .prettyPrinted) else { return }
-		guard let chatMessage = try? JSONDecoder().decode(StringChatMessageInbound.self, from: jsonData) else { return }
+		guard let chatMessage = try? JSONDecoder().decode(ChatMessageResponse.self, from: jsonData) else { return }
 
 		let stringChatMessage = chatMessage.data.message
 		let senderName = chatMessage.data.sender.data.name
@@ -120,11 +120,10 @@ class ChatService: ChatServicing {
 	private func send(_ stringMessage: String, _ chatMessage: ChatMessageType) {
 
 		let sender: ChatMessageSender = ChatMessageSender(fromUserInfoService: self.userInfoService)
-
-		let message = StringChatMessageOutbound(message: stringMessage, sender: sender)
+		let message = ChatMessageParams(message: stringMessage, sender: sender)
 		let channelId = 1 // TODO Direct here via initializer.
 
-		provider.requestPlain(target: .sendMessage(message, channelId)) { (error) in
+		provider.request(target: .sendMessage(message, channelId)) { (error) in
 			guard error == nil else {
 				self.serviceable?.chatService(failedToSendMessage: chatMessage)
 				return

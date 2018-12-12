@@ -19,7 +19,7 @@ extension Provider {
         return defaultDecoder
     }()
 
-	func requestPlain(target: API, handler: @escaping ((ApiError?) -> Void)) {
+	func request(target: API, handler: @escaping ((ApiError?) -> Void)) {
 		self.request(target) { (result) in
 			switch result {
 			case .success:

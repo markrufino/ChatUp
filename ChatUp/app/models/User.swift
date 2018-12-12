@@ -8,9 +8,9 @@
 
 import Foundation
 
-typealias <#type name#> = <#type expression#>
+typealias UserResponse = DataResp<User>
 
-struct User: Decodable {
+struct User: Codable {
 	let id: Int
 	let name: String
 	let email: String
