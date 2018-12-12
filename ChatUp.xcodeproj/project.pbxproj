@@ -51,6 +51,8 @@
 		5CC5A13621BFB79100F83EA5 /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A13521BFB79100F83EA5 /* LoginBuilder.swift */; };
 		5CC5A13C21C0B72900F83EA5 /* ChatMessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A13B21C0B72900F83EA5 /* ChatMessageResponse.swift */; };
 		5CC5A13E21C0BD6000F83EA5 /* ChatMessageParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A13D21C0BD6000F83EA5 /* ChatMessageParam.swift */; };
+		5CC5A14021C0C6EC00F83EA5 /* HeaderKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A13F21C0C6EC00F83EA5 /* HeaderKeys.swift */; };
+		5CC5A14221C0C9B200F83EA5 /* RegistrationParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A14121C0C9B200F83EA5 /* RegistrationParams.swift */; };
 		5CCC19E621BCB89700E25C95 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC19E421BCB89700E25C95 /* ChatViewController.swift */; };
 		5CCC19E721BCB89700E25C95 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CCC19E521BCB89700E25C95 /* ChatViewController.xib */; };
 		5CCC19E921BCB8A000E25C95 /* ChatBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC19E821BCB8A000E25C95 /* ChatBuilder.swift */; };
@@ -115,6 +117,8 @@
 		5CC5A13521BFB79100F83EA5 /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
 		5CC5A13B21C0B72900F83EA5 /* ChatMessageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageResponse.swift; sourceTree = "<group>"; };
 		5CC5A13D21C0BD6000F83EA5 /* ChatMessageParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessageParam.swift; sourceTree = "<group>"; };
+		5CC5A13F21C0C6EC00F83EA5 /* HeaderKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderKeys.swift; sourceTree = "<group>"; };
+		5CC5A14121C0C9B200F83EA5 /* RegistrationParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationParams.swift; sourceTree = "<group>"; };
 		5CCC19E421BCB89700E25C95 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		5CCC19E521BCB89700E25C95 /* ChatViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
 		5CCC19E821BCB8A000E25C95 /* ChatBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBuilder.swift; sourceTree = "<group>"; };
@@ -221,6 +225,7 @@
 			children = (
 				5C6E92D721BC8E27005FECCA /* API.swift */,
 				5C6E92DC21BC8E27005FECCA /* APIAuthType.swift */,
+				5CC5A13F21C0C6EC00F83EA5 /* HeaderKeys.swift */,
 				5C6E92D621BC8E27005FECCA /* Provider.swift */,
 				5C6E92D821BC8E27005FECCA /* custom */,
 			);
@@ -389,6 +394,7 @@
 				5CF46C0A21BE22B2009E8AC8 /* DataParam.swift */,
 				5C2CAE8121BE836B0014C86B /* PusherKeys.swift */,
 				5C60C6D921BFABD1008DE2AE /* User.swift */,
+				5CC5A14121C0C9B200F83EA5 /* RegistrationParams.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -574,6 +580,7 @@
 				5C2F438621BF638500A10B38 /* ChatMessageViewModel.swift in Sources */,
 				5CCC19E921BCB8A000E25C95 /* ChatBuilder.swift in Sources */,
 				5CF46C0221BE1AC0009E8AC8 /* JSONEncoder+snakeCaseEncoder.swift in Sources */,
+				5CC5A14221C0C9B200F83EA5 /* RegistrationParams.swift in Sources */,
 				5C6E933121BC9966005FECCA /* BuilderType.swift in Sources */,
 				5C2CAE9621BE88F70014C86B /* UITableView+registerCustomCell.swift in Sources */,
 				5C6E932F21BC995C005FECCA /* ServiceType.swift in Sources */,
@@ -584,6 +591,7 @@
 				5C6E92F721BC8E28005FECCA /* Provider+refreshTokenAndRetry.swift in Sources */,
 				5C6E92F921BC8E28005FECCA /* Keychain.swift in Sources */,
 				5C60C6D421BFA0C3008DE2AE /* LoginService.swift in Sources */,
+				5CC5A14021C0C6EC00F83EA5 /* HeaderKeys.swift in Sources */,
 				5C2F438921BF7C3B00A10B38 /* MockChatService.swift in Sources */,
 				5CF46C0B21BE22B2009E8AC8 /* DataParam.swift in Sources */,
 				5C2CAE9121BE84A30014C86B /* LeftChatMessageTableViewCell.swift in Sources */,

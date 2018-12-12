@@ -123,7 +123,7 @@ class ChatService: ChatServicing {
 		let message = ChatMessageParams(message: stringMessage, sender: sender)
 		let channelId = 1 // TODO Direct here via initializer.
 
-		provider.request(target: .sendMessage(message, channelId)) { (error) in
+		provider.request(target: .sendMessage(params: message, channelId: channelId)) { (error) in
 			guard error == nil else {
 				self.serviceable?.chatService(failedToSendMessage: chatMessage)
 				return
