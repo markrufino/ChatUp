@@ -36,7 +36,7 @@ extension Provider {
 					return
 				}
 
-				if let providerError = try? errorResponse.map(ApiError.self) {
+				if let providerError = try? errorResponse.map(ApiError.self, using: JSONDecoder.snakeCaseDecoder) {
 					handler(providerError)
 				}
 			}
@@ -44,7 +44,7 @@ extension Provider {
 	}
 
     func requestDecodable<D: Decodable>(target: API, decoder: JSONDecoder = Provider.defaultDecoder, handler: @escaping RequestDecodableCompletion<D>) {
-        
+
         self.request(target) { (result) in
             
             var resultType: ResultType<D>!
@@ -52,11 +52,12 @@ extension Provider {
             switch result {
                 
             case .success(let value):
+
                 let decodableJSON = try! value.map(D.self, using: decoder, failsOnEmptyData: true)
                 resultType = ResultType<D>.success(decodableJSON)
                 
             case .failure(let error):
-                
+
                 guard case .statusCode(let errorResponse) = error else {
                     resultType = ResultType<D>.failed(ApiError(message: "Non-Status Code Error"))
                     break
@@ -67,7 +68,7 @@ extension Provider {
                     return
                 }
                 
-                if let providerError = try? errorResponse.map(ApiError.self) {
+                if let providerError = try? errorResponse.map(ApiError.self, using: JSONDecoder.snakeCaseDecoder) {
                     resultType = ResultType<D>.failed(providerError)
                 }
                 

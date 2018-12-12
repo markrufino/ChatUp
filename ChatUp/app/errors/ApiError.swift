@@ -9,7 +9,7 @@
 import Foundation
 
 struct ApiError: Decodable {
-    var message: String
+    var message: String?
 }
 
 extension ApiError: Swift.Error, LocalizedError {

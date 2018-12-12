@@ -17,4 +17,6 @@ enum HeaderKeys {
 	static let X_DEVICE_FCM_TOKEN = "X-Device-FCM-Token"
 	static let X_DEVICE_APP_VERSION = "X-Device-App-Version"
 	static let AUTHORIZATION = "Authorization"
+	static let CONTENT_TYPE = "Content-Type"
+	static let ACCEPT = "ACCEPT"
 }

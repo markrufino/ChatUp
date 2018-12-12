@@ -26,7 +26,7 @@ extension Provider {
 					break
 				}
 
-				if let providerError = try? errorResponse.map(ApiError.self) {
+				if let providerError = try? errorResponse.map(ApiError.self, using: JSONDecoder.snakeCaseDecoder) {
 					handler(providerError)
 				}
 			}
@@ -49,7 +49,7 @@ extension Provider {
 					break
 				}
 
-				if let providerError = try? errorResponse.map(ApiError.self) {
+				if let providerError = try? errorResponse.map(ApiError.self, using: JSONDecoder.snakeCaseDecoder) {
 					handler(ResultType<D>.failed(providerError))
 				}
 			}

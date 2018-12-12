@@ -91,6 +91,10 @@ extension API: TargetType {
 
 		}
     }
+
+	var validationType: Moya.ValidationType {
+		return .successCodes
+	}
     
     var headers: [String : String]? {
 
@@ -104,7 +108,9 @@ extension API: TargetType {
 			HeaderKeys.X_DEVICE_MANUFACTURER: UIDevice.manufacturer,
 			HeaderKeys.X_DEVICE_MODEL : UIDevice.model,
 			HeaderKeys.X_DEVICE_FCM_TOKEN: fcmToken,
-			HeaderKeys.X_DEVICE_APP_VERSION : UIDevice.appVersion
+			HeaderKeys.X_DEVICE_APP_VERSION : UIDevice.appVersion,
+			HeaderKeys.CONTENT_TYPE: "application/json",
+			HeaderKeys.ACCEPT: "application/json"
 		]
 
 		switch auth {
@@ -120,7 +126,6 @@ extension API: TargetType {
 			return baseHeader
 
 		}
-
 
     }
     

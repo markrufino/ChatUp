@@ -18,7 +18,19 @@ class LoginViewController: UIViewController, CreatedFromNib {
 	override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+		initViews()
     }
+
+	private func initViews() {
+		initTextFields()
+	}
+
+	private func initTextFields() {
+		#if DEBUG
+		self.emailTextField.text = "mark.rufino.io@gmail.com"
+		self.passwordTextField.text = "hello123"
+		#endif
+	}
 
 	// MARK: - Actions
 	@IBAction func didTapLogin(_ sender: UIButton) {
@@ -44,7 +56,7 @@ class LoginViewController: UIViewController, CreatedFromNib {
 	}
 
 	private func validateAndGetPassword() -> String? {
-		guard let password = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return nil }
+		guard let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return nil }
 		guard password != "" else { return nil }
 		return password
 	}
