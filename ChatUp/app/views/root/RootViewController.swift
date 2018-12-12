@@ -16,11 +16,11 @@ class RootViewController: UIViewController, CreatedFromNib {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        perform(#selector(goToChat), with: nil, afterDelay: 2.0)
+        perform(#selector(goToLogin), with: nil, afterDelay: 2.0)
     }
     
-    @objc private func goToChat() {
-        self.present(ChatBuilder().build(), animated: true, completion: nil)
+    @objc private func goToLogin() {
+        self.present(LoginBuilder().build(), animated: true, completion: nil)
     }
     
 }

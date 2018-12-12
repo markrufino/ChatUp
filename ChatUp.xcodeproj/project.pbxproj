@@ -177,14 +177,6 @@
 			path = right;
 			sourceTree = "<group>";
 		};
-		5C2F438721BF7C2A00A10B38 /* mocks */ = {
-			isa = PBXGroup;
-			children = (
-				5C2F438821BF7C3B00A10B38 /* MockChatService.swift */,
-			);
-			path = mocks;
-			sourceTree = "<group>";
-		};
 		5C60C6CE21BF9D01008DE2AE /* login */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,7 +207,6 @@
 				5CF46BFE21BE19FB009E8AC8 /* extensions */,
 				5CF46C0921BE1FE1009E8AC8 /* models */,
 				5C6E932021BC9843005FECCA /* protocols */,
-				5C2F438721BF7C2A00A10B38 /* mocks */,
 				5CF46C0821BE1FC7009E8AC8 /* services */,
 				5C6E932521BC9904005FECCA /* views */,
 			);
@@ -333,6 +324,31 @@
 			path = root;
 			sourceTree = "<group>";
 		};
+		5CC5A14721C1054E00F83EA5 /* chat */ = {
+			isa = PBXGroup;
+			children = (
+				5C2F438821BF7C3B00A10B38 /* MockChatService.swift */,
+				5CCC19F021BCC78400E25C95 /* ChatService.swift */,
+			);
+			path = chat;
+			sourceTree = "<group>";
+		};
+		5CC5A14821C1055400F83EA5 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				5C60C6D321BFA0C3008DE2AE /* LoginService.swift */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		5CC5A14921C1055900F83EA5 /* user_info */ = {
+			isa = PBXGroup;
+			children = (
+				5CF46C1221BE2751009E8AC8 /* UserInfoService.swift */,
+			);
+			path = user_info;
+			sourceTree = "<group>";
+		};
 		5CCC19E321BCB87E00E25C95 /* chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,12 +383,12 @@
 				5CF46BFF21BE1A29009E8AC8 /* Encodable+asDictionary.swift */,
 				5CF46C0321BE1B12009E8AC8 /* JSONDecoder+snakeCaseDecoder.swift */,
 				5CF46C0121BE1AC0009E8AC8 /* JSONEncoder+snakeCaseEncoder.swift */,
+				5CC5A14521C0F6AE00F83EA5 /* Optional+expect.swift */,
 				5C60C6D521BFA2B3008DE2AE /* UIDevice+.swift */,
+				5C60C6D721BFA5B8008DE2AE /* UIDevice+modelName.swift */,
 				5C2CAE9521BE88F70014C86B /* UITableView+registerCustomCell.swift */,
 				5CF46C1A21BE62B5009E8AC8 /* UIView+cornerRadius.swift */,
-				5C60C6D721BFA5B8008DE2AE /* UIDevice+modelName.swift */,
 				5CC5A13321BFB48100F83EA5 /* UIViewController+showAlert.swift */,
-				5CC5A14521C0F6AE00F83EA5 /* Optional+expect.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -380,9 +396,9 @@
 		5CF46C0821BE1FC7009E8AC8 /* services */ = {
 			isa = PBXGroup;
 			children = (
-				5CCC19F021BCC78400E25C95 /* ChatService.swift */,
-				5CF46C1221BE2751009E8AC8 /* UserInfoService.swift */,
-				5C60C6D321BFA0C3008DE2AE /* LoginService.swift */,
+				5CC5A14921C1055900F83EA5 /* user_info */,
+				5CC5A14821C1055400F83EA5 /* login */,
+				5CC5A14721C1054E00F83EA5 /* chat */,
 			);
 			path = services;
 			sourceTree = "<group>";

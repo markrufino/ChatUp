@@ -10,10 +10,13 @@ import Foundation
 import Moya
 
 enum API {
+	// MARK: - Auth
 	case register(params: RegistrationParams)
 	case login(email: String, password: String)
 	case logout
 	case refreshToken
+
+	// MARK: - Channel
 	case getChannelInfo(channelId: Int)
 	case sendMessage(params: ChatMessageParams, channelId: Int)
 }
@@ -27,13 +30,13 @@ extension API: TargetType {
     var path: String {
         switch self {
 
-		case .register: return "/register"
+		case .register: return "/auth/register"
 
-		case .login: return "/login"
+		case .login: return "/auth/login"
 
-		case .logout: return "/logout"
+		case .logout: return "/auth/logout"
 
-		case .refreshToken: return "/refresh"
+		case .refreshToken: return "/auth/refresh"
 
 		case .getChannelInfo(let channelId): return "/channel/\(channelId)"
 
@@ -45,15 +48,15 @@ extension API: TargetType {
     var method: Moya.Method {
         switch self {
 
-		case .refreshToken: return .post
+		case .register: return .post
 
 		case .login: return .post
 
 		case .logout: return .post
 
-		case .getChannelInfo: return .get
+		case .refreshToken: return .post
 
-		case .register: return .post
+		case .getChannelInfo: return .get
 
 		case .sendMessage: return .post
 
@@ -129,10 +132,12 @@ extension API {
 
     var auth: APIAuthType {
         switch self {
-        case .refreshToken, .sendMessage, .login:
+        case .refreshToken,
+			 .sendMessage,
+			 .register,
+			 .login:
             return .none
-		case .register,
-			 .logout,
+		case .logout,
 			 .getChannelInfo:
 			return .accessToken
 		}

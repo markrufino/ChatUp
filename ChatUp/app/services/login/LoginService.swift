@@ -46,8 +46,8 @@ class LoginService: LoginServicing {
 	// MARK: - Private
 
 	private var provider: Provider
-	private weak var serviceable: LoginServiceable?
 	private var userInfoService: UserInfoServicing
+	private weak var serviceable: LoginServiceable?
 
 }
 
