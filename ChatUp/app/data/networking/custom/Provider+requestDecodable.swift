@@ -69,29 +69,28 @@ extension Provider {
 
 				} catch {
 
-					if let err = error as? MoyaError {
-						print(err.response?.statusCode)
-						print("")
+					if let e = error as? MoyaError {
+
+						guard case .statusCode(let errorResponse) = e else {
+							resultType = ResultType<D>.failed(ApiError(message: "Non-Status Code Error"))
+							break
+						}
+
+						if errorResponse.statusCode == 401 && target.needsToRefreshToken {
+							self.refreshTokenAndRetry(target: target, handler: handler)
+							return
+						}
+
+						if let providerError = try? errorResponse.map(ApiError.self, using: JSONDecoder.snakeCaseDecoder) {
+							resultType = ResultType<D>.failed(providerError)
+						}
+
 					}
 
 				}
 
             case .failure(let error):
-
-                guard case .statusCode(let errorResponse) = error else {
-                    resultType = ResultType<D>.failed(ApiError(message: "Non-Status Code Error"))
-                    break
-                }
-                
-                if errorResponse.statusCode == 401 && target.needsToRefreshToken {
-                    self.refreshTokenAndRetry(target: target, handler: handler)
-                    return
-                }
-                
-                if let providerError = try? errorResponse.map(ApiError.self, using: JSONDecoder.snakeCaseDecoder) {
-                    resultType = ResultType<D>.failed(providerError)
-                }
-                
+                print("what to do here?")
             }
             
             handler(resultType)
