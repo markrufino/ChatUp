@@ -20,6 +20,7 @@ extension Provider {
 
 					// The extraction of the token is done by the 'AuthTokenExtractorPlugin'
 					let _ = try response.filterSuccessfulStatusCodes()
+					self.requestPlain(target, decoder: decoder, completion: completion)
 
 				} catch {
 
@@ -61,7 +62,8 @@ extension Provider {
 
 					// The extraction of the token is done by the 'AuthTokenExtractorPlugin'
 					let _ = try response.filterSuccessfulStatusCodes()
-					
+					self.requestJSON(target, decoder: decoder, completion: completion)
+
 				} catch {
 
 					guard let e = error as? MoyaError else {
