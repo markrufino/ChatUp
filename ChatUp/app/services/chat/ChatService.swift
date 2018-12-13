@@ -27,6 +27,8 @@ protocol ChatServiceable: AnyObject {
     
     func chatServiceWasDisconnected()
 
+	func chatService(didReceiveMessageHistory messageHistory: [ChatMessageFromHistory])
+
 	func chatService(failedToGetChannelInfoFor forChannelId: Int, withErrorMessage errorMessage: String)
 
 	func chatService(successfullySentMessage message: ChatMessageType)
@@ -88,6 +90,19 @@ class ChatService: ChatServicing {
 
 				self.channel = self.pusher.subscribe(channelName: channel.name)
 				self.channel?.bind(eventName: ChatEvents.newMessage.stringValue, callback: self.messageSentEventHandler(_:))
+
+
+				// process message history
+
+				let history = channel.messages.data.flatMap({ (message) -> ChatMessageFromHistory in
+					// NOTE: In the near future, messages should have a type property so that we could check if they are plain text or they come w/ media
+					let chatMessageType = ChatMessageType.string(message.message ?? "")
+					let senderName = message.sender.data.name
+					let isFromUser = message.sender.data.id == self.userInfoService.userId
+					return ChatMessageFromHistory(chatMessageMeta: chatMessageType, senderName: senderName, isFromUser: isFromUser)
+				})
+
+				self.serviceable?.chatService(didReceiveMessageHistory: history)
 
 			case .error(let error):
 				self.serviceable?.chatService(failedToGetChannelInfoFor: self.channelId, withErrorMessage: error.localizedDescription)

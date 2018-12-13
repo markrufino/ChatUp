@@ -162,6 +162,27 @@ extension ChatViewController: UITableViewDataSource {
 
 extension ChatViewController: ChatServiceable {
 
+	func chatService(didReceiveMessageHistory messageHistory: [ChatMessageFromHistory]) {
+		messageHistory.forEach { (message) in
+			let chatMessageViewModel: ChatMessageViewModel
+			switch message.chatMessageMeta {
+			case .string(let stringMessage):
+
+				if message.isFromUser {
+					chatMessageViewModel = ChatMessageViewModel(
+						withText: stringMessage, andOrMedia: nil, thatWillAppearOnThe: .right
+					)
+				} else {
+					chatMessageViewModel = ChatMessageViewModel(
+						withText: stringMessage, andOrMedia: nil, thatWillAppearOnThe: .left(senderName: message.senderName)
+					)
+				}
+
+			}
+			updateTableViewWithChatMessage(chatMessageViewModel)
+		}
+	}
+
 	func chatService(failedToGetChannelInfoFor forChannelId: Int, withErrorMessage errorMessage: String) {
 		showAlert(withType: .error, andMessage: errorMessage)
 	}
