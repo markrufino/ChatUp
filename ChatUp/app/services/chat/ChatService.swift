@@ -27,6 +27,8 @@ protocol ChatServiceable: AnyObject {
     
     func chatServiceWasDisconnected()
 
+	func chatService(failedToGetChannelInfoFor forChannelId: Int, withErrorMessage errorMessage: String)
+
 	func chatService(successfullySentMessage message: ChatMessageType)
 
 	func chatService(failedToSendMessage message: ChatMessageType)
@@ -37,12 +39,12 @@ protocol ChatServiceable: AnyObject {
 
 enum ChatEvents {
     
-    case messageSent
+    case newMessage
     case typing
     
     var stringValue: String {
         switch self {
-        case .messageSent:
+        case .newMessage:
             return "message-sent"
         case .typing:
             return "typing"
@@ -57,13 +59,13 @@ class ChatService: ChatServicing {
 		 withUserInfoService userInfoService: UserInfoServicing,
 		 andCredentials credentials: PusherKeys,
 		 servicing serviceable: ChatServiceable,
-		 inChannel channelName: String = "private-general") {
+		 inChannel channelId: Int) {
 
 		self.provider = provider
 		self.userInfoService = userInfoService
 		self.credentials = credentials
 		self.serviceable = serviceable
-		self.channelName = channelName
+		self.channelId = channelId
 
 		// see: https://pusher.com/docs/authenticating_users
 		self.pusher = Pusher(withAppKey: credentials.key, options: {
@@ -75,10 +77,23 @@ class ChatService: ChatServicing {
 	// MARK: - Public
 
 	func start() {
-		pusher.delegate = self
-		pusher.connect()
-		channel = pusher.subscribe(channelName: channelName)
-		channel?.bind(eventName: ChatEvents.messageSent.stringValue, callback: messageSentEventHandler(_:))
+
+		self.provider.requestJSON(.getChannelInfo(channelId: self.channelId)) { [unowned self] (result: RequestResult<ChannelResponse>) in
+			switch result {
+			case .success(let value):
+				let channel = value.data
+
+				self.pusher.delegate = self
+				self.pusher.connect()
+
+				self.channel = self.pusher.subscribe(channelName: channel.name)
+				self.channel?.bind(eventName: ChatEvents.newMessage.stringValue, callback: self.messageSentEventHandler(_:))
+
+			case .error(let error):
+				self.serviceable?.chatService(failedToGetChannelInfoFor: self.channelId, withErrorMessage: error.localizedDescription)
+			}
+		}
+
 	}
 
 	func send(chatMessage: ChatMessageType) {
@@ -93,11 +108,13 @@ class ChatService: ChatServicing {
 	}
 
 	// MARK: - Private
+
 	private var provider: Provider
 	private var userInfoService: UserInfoServicing
 	private var credentials: PusherKeys
 	private weak var serviceable: ChatServiceable?
-	private var channelName: String
+	private var channelId: Int
+
 	private var pusher: Pusher
 	private var channel: PusherChannel?
 
@@ -123,13 +140,13 @@ class ChatService: ChatServicing {
 		let message = ChatMessageParams(message: stringMessage, sender: sender)
 		let channelId = 1 // TODO Direct here via initializer.
 
-		provider.request(target: .sendMessage(params: message, channelId: channelId)) { (error) in
-			guard error == nil else {
-				self.serviceable?.chatService(failedToSendMessage: chatMessage)
-				return
-			}
-			self.serviceable?.chatService(successfullySentMessage: chatMessage)
-		}
+//		provider.request(target: .sendMessage(params: message, channelId: channelId)) { (error) in
+//			guard error == nil else {
+//				self.serviceable?.chatService(failedToSendMessage: chatMessage)
+//				return
+//			}
+//			self.serviceable?.chatService(successfullySentMessage: chatMessage)
+//		}
 	}
     
 }

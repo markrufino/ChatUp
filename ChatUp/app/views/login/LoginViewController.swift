@@ -27,7 +27,7 @@ class LoginViewController: UIViewController, CreatedFromNib {
 
 	private func initTextFields() {
 		#if DEBUG
-		self.emailTextField.text = "mark.rufino.io@gmail.com"
+		self.emailTextField.text = "jimuelpalaca@gmail.com"
 		self.passwordTextField.text = "hello123"
 		#endif
 	}
@@ -66,7 +66,7 @@ class LoginViewController: UIViewController, CreatedFromNib {
 extension LoginViewController: LoginServiceable {
 
 	func loginSuccess() {
-		
+		self.present(ChatBuilder().build(), animated: true, completion: nil)
 	}
 
 	func loginFailed(withError message: String) {

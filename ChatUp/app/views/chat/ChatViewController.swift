@@ -117,17 +117,6 @@ extension ChatViewController: UITextViewDelegate {
 extension ChatViewController: UITableViewDelegate {
 
 	func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//		guard let stringMessage = chatMessages[indexPath.row].text else {
-//			return 32.0
-//		}
-
-//		let estimatedHeight = NSString(string: stringMessage)
-//			.boundingRect(
-//				with: CGSize(width: <#T##CGFloat#>, height: CGFloat),
-//				options: NSStringDrawingOptions.usesLineFragmentOrigin,
-//				attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)],
-//				context: nil).size.height
-
 		return 100.0
 	}
 
@@ -163,6 +152,10 @@ extension ChatViewController: UITableViewDataSource {
 }
 
 extension ChatViewController: ChatServiceable {
+
+	func chatService(failedToGetChannelInfoFor forChannelId: Int, withErrorMessage errorMessage: String) {
+		showAlert(withType: .error, andMessage: errorMessage)
+	}
 
 	func chatServiceSuccessfullyConnected() {
 		onlineStatusIndicatorView.backgroundColor = UIColor.green

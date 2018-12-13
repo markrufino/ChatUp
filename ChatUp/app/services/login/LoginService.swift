@@ -31,16 +31,18 @@ class LoginService: LoginServicing {
 	}
 
 	func login(withEmail email: String, andPassword password: String) {
-		provider.requestDecodable(target: .login(email: email, password: password)) { (result: ResultType<LoginResponse>) in
+
+		provider.requestJSON(.login(email: email, password: password)) { (result: RequestResult<LoginResponse>) in
 			switch result {
 			case .success(let value):
 				let user = value.data
 				self.userInfoService.set(username: user.name, userId: user.id, email: user.email, isOnline: user.isOnline)
 				self.serviceable?.loginSuccess()
-			case .failed(let error):
+			case .error(let error):
 				self.serviceable?.loginFailed(withError: error.localizedDescription)
 			}
 		}
+
 	}
 
 	// MARK: - Private

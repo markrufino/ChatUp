@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias RequestCompletion<D: Decodable> = (RequestResult<D>) -> Void
+typealias RequestJSONCompletion<D: Decodable> = (RequestResult<D>) -> Void
 
 enum RequestResult<D: Decodable> {
     case success(D)
