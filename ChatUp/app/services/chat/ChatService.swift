@@ -128,7 +128,7 @@ class ChatService: ChatServicing {
 		guard let jsonData = try? JSONSerialization.data(withJSONObject: body, options: .prettyPrinted) else { return }
 		guard let chatMessage = try? JSONDecoder().decode(ChatMessageResponse.self, from: jsonData) else { return }
 
-		let stringChatMessage = chatMessage.data.message
+		let stringChatMessage = chatMessage.data.message ?? ""
 		let senderName = chatMessage.data.sender.data.name
 
 		serviceable?.chatService(didReceiveMessage: ChatMessageType.string(stringChatMessage), fromSenderName: senderName)

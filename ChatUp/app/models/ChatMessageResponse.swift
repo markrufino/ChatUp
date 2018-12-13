@@ -12,6 +12,6 @@ typealias ChatMessageResponse = DataResp<ChatMessageResponseMeta>
 
 struct ChatMessageResponseMeta: Codable {
 	let id: Int
-	let message: String
+	let message: String?
 	let sender: DataResp<ChatMessageSender>
 }
