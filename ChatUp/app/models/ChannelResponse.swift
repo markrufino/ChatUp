@@ -15,7 +15,7 @@ struct Channel: Codable {
 	let id: Int
 	let name: String
 	let isPrivate: Bool
-	let messages: DataResp<[ChatMessageResponse]>
+	let messages: DataResp<[ChatMessageResponseMeta]>
 	let members: DataResp<[User]>
 
 }

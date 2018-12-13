@@ -61,6 +61,8 @@
 		5CE156A421C20A8300D1F667 /* Provider+requestPlain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE156A321C20A8300D1F667 /* Provider+requestPlain.swift */; };
 		5CE156A621C23A1800D1F667 /* ChannelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE156A521C23A1800D1F667 /* ChannelResponse.swift */; };
 		5CE156A821C266B700D1F667 /* pusher_keys.json in Resources */ = {isa = PBXBuildFile; fileRef = 5CE156A721C266B700D1F667 /* pusher_keys.json */; };
+		5CE156AD21C2683D00D1F667 /* AuthTokenExtractorPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE156AC21C2683D00D1F667 /* AuthTokenExtractorPlugin.swift */; };
+		5CE156B021C271EE00D1F667 /* LogoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE156AF21C271EE00D1F667 /* LogoutService.swift */; };
 		5CF46C0021BE1A29009E8AC8 /* Encodable+asDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF46BFF21BE1A29009E8AC8 /* Encodable+asDictionary.swift */; };
 		5CF46C0221BE1AC0009E8AC8 /* JSONEncoder+snakeCaseEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF46C0121BE1AC0009E8AC8 /* JSONEncoder+snakeCaseEncoder.swift */; };
 		5CF46C0421BE1B12009E8AC8 /* JSONDecoder+snakeCaseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF46C0321BE1B12009E8AC8 /* JSONDecoder+snakeCaseDecoder.swift */; };
@@ -130,6 +132,8 @@
 		5CE156A321C20A8300D1F667 /* Provider+requestPlain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Provider+requestPlain.swift"; sourceTree = "<group>"; };
 		5CE156A521C23A1800D1F667 /* ChannelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelResponse.swift; sourceTree = "<group>"; };
 		5CE156A721C266B700D1F667 /* pusher_keys.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pusher_keys.json; sourceTree = "<group>"; };
+		5CE156AC21C2683D00D1F667 /* AuthTokenExtractorPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokenExtractorPlugin.swift; sourceTree = "<group>"; };
+		5CE156AF21C271EE00D1F667 /* LogoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutService.swift; sourceTree = "<group>"; };
 		5CF46BFF21BE1A29009E8AC8 /* Encodable+asDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+asDictionary.swift"; sourceTree = "<group>"; };
 		5CF46C0121BE1AC0009E8AC8 /* JSONEncoder+snakeCaseEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+snakeCaseEncoder.swift"; sourceTree = "<group>"; };
 		5CF46C0321BE1B12009E8AC8 /* JSONDecoder+snakeCaseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+snakeCaseDecoder.swift"; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 				5C6E92DC21BC8E27005FECCA /* APIAuthType.swift */,
 				5CC5A13F21C0C6EC00F83EA5 /* HeaderKeys.swift */,
 				5C6E92D621BC8E27005FECCA /* Provider.swift */,
+				5CE156A921C267A200D1F667 /* plugins */,
 				5CCC251721C16CA6008B2749 /* request_extensions */,
 			);
 			path = networking;
@@ -382,6 +387,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		5CE156A921C267A200D1F667 /* plugins */ = {
+			isa = PBXGroup;
+			children = (
+				5CE156AC21C2683D00D1F667 /* AuthTokenExtractorPlugin.swift */,
+			);
+			path = plugins;
+			sourceTree = "<group>";
+		};
+		5CE156AE21C271E400D1F667 /* logout */ = {
+			isa = PBXGroup;
+			children = (
+				5CE156AF21C271EE00D1F667 /* LogoutService.swift */,
+			);
+			path = logout;
+			sourceTree = "<group>";
+		};
 		5CF46BFE21BE19FB009E8AC8 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,6 +422,7 @@
 		5CF46C0821BE1FC7009E8AC8 /* services */ = {
 			isa = PBXGroup;
 			children = (
+				5CE156AE21C271E400D1F667 /* logout */,
 				5CC5A14721C1054E00F83EA5 /* chat */,
 				5CC5A14821C1055400F83EA5 /* login */,
 				5CC5A14921C1055900F83EA5 /* user_info */,
@@ -613,6 +635,7 @@
 				5C2CAE9621BE88F70014C86B /* UITableView+registerCustomCell.swift in Sources */,
 				5C6E932F21BC995C005FECCA /* ServiceType.swift in Sources */,
 				5C60C6E421BFB10F008DE2AE /* ChatMessageType.swift in Sources */,
+				5CE156B021C271EE00D1F667 /* LogoutService.swift in Sources */,
 				5CE156A621C23A1800D1F667 /* ChannelResponse.swift in Sources */,
 				5CC5A13C21C0B72900F83EA5 /* ChatMessageResponse.swift in Sources */,
 				5CF46C0021BE1A29009E8AC8 /* Encodable+asDictionary.swift in Sources */,
@@ -628,6 +651,7 @@
 				5C6E92FC21BC8E28005FECCA /* ApiError.swift in Sources */,
 				5C60C6D121BF9D17008DE2AE /* LoginViewController.swift in Sources */,
 				5C2CAE8A21BE847B0014C86B /* RightChatMessageTableViewCell.swift in Sources */,
+				5CE156AD21C2683D00D1F667 /* AuthTokenExtractorPlugin.swift in Sources */,
 				5CC5A13621BFB79100F83EA5 /* LoginBuilder.swift in Sources */,
 				5CCC19F221BCCD7500E25C95 /* RootViewController.swift in Sources */,
 				5CC5A13E21C0BD6000F83EA5 /* ChatMessageParam.swift in Sources */,

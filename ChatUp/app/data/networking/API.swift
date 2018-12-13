@@ -115,7 +115,7 @@ extension API: TargetType {
 			guard let accessToken = keychain.apiAccessToken else {
 				fatalError("ERROR: Attempting call an authenticated endpoint w/o an access token!")
 			}
-			baseHeader[HeaderKeys.AUTHORIZATION] = "Bearer \(accessToken)"
+			baseHeader[HeaderKeys.AUTHORIZATION] = "\(accessToken)"
 			return baseHeader
 
 		case .none:
@@ -133,13 +133,13 @@ extension API {
 
     var auth: APIAuthType {
         switch self {
-        case .refreshToken,
-			 .sendMessage,
-			 .register,
+        case .register,
 			 .login:
             return .none
-		case .logout,
-			 .getChannelInfo:
+		case .refreshToken,
+			 .logout,
+			 .getChannelInfo,
+			 .sendMessage:
 			return .accessToken
 		}
     }

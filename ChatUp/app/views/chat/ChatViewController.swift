@@ -11,6 +11,10 @@ import UIKit
 
 class ChatViewController: UIViewController, CreatedFromNib {
 
+	deinit {
+		print("ChatViewController instance was deallocated.")
+	}
+
 	@IBOutlet weak var userNameLabel: UILabel!
 	@IBOutlet weak var onlineStatusIndicatorView: UIView!
 	@IBOutlet weak var chatTableView: UITableView!
@@ -19,6 +23,7 @@ class ChatViewController: UIViewController, CreatedFromNib {
 
 	var userInfoService: UserInfoServicing?
     var chatService: ChatServicing?
+	var logoutService: LogoutServicing?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +74,11 @@ class ChatViewController: UIViewController, CreatedFromNib {
     @IBAction func didTapSend(_ sender: UIButton) {
         sendStringMessage()
     }
-    
+
+	@IBAction func didTapLogOut(_ sender: Any) {
+		logoutService?.logout()
+	}
+
     private func sendStringMessage() {
         guard let message = messageTextView.text else { return }
 		clearMessageTextView()
@@ -193,3 +202,10 @@ extension ChatViewController: ChatServiceable {
 
 }
 
+extension ChatViewController: LogoutServiceable {
+
+	func userWasSuccessfullyLoggedOut() {
+		self.dismiss(animated: true, completion: nil)
+	}
+
+}

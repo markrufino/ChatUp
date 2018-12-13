@@ -87,14 +87,27 @@
                                 <constraint firstAttribute="width" constant="16" id="WGM-8z-o8y"/>
                             </constraints>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyI-E5-eMs">
+                            <rect key="frame" x="358" y="11" width="48" height="34"/>
+                            <color key="backgroundColor" name="PRIMARY"/>
+                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                            <state key="normal" title="logout">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapLogOut:" destination="-1" eventType="touchUpInside" id="geg-6W-5xk"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" name="PRIMARY"/>
                     <constraints>
                         <constraint firstItem="3bA-rk-15i" firstAttribute="centerY" secondItem="3dt-J4-7MG" secondAttribute="centerY" id="3qV-sY-JUD"/>
                         <constraint firstAttribute="height" constant="56" id="IWU-FY-bfC"/>
                         <constraint firstItem="3bA-rk-15i" firstAttribute="leading" secondItem="3dt-J4-7MG" secondAttribute="leading" constant="8" id="N6k-O5-QV6"/>
+                        <constraint firstItem="qyI-E5-eMs" firstAttribute="centerY" secondItem="3dt-J4-7MG" secondAttribute="centerY" id="Za5-M5-TOy"/>
                         <constraint firstItem="WrW-wZ-giq" firstAttribute="leading" secondItem="3bA-rk-15i" secondAttribute="trailing" constant="8" id="aKv-2Q-0fZ"/>
                         <constraint firstItem="WrW-wZ-giq" firstAttribute="centerY" secondItem="3bA-rk-15i" secondAttribute="centerY" id="off-fN-31V"/>
+                        <constraint firstAttribute="trailing" secondItem="qyI-E5-eMs" secondAttribute="trailing" constant="8" id="wSj-Z2-lge"/>
                     </constraints>
                 </view>
             </subviews>

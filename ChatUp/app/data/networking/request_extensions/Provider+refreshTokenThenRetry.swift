@@ -17,14 +17,10 @@ extension Provider {
 			case .success(let response):
 
 				do {
-					let successfulResponse = try response.filterSuccessfulStatusCodes()
-					if let header = successfulResponse.response?.allHeaderFields {
-						if let newAccessToken = header[HeaderKeys.AUTHORIZATION] {
-							Keychain().apiAccessToken = newAccessToken as? String
-							self.requestPlain(target, decoder: decoder, completion: completion)
-						}
-					}
-					// FALLBACK
+
+					// The extraction of the token is done by the 'AuthTokenExtractorPlugin'
+					let _ = try response.filterSuccessfulStatusCodes()
+
 				} catch {
 
 					guard let e = error as? MoyaError else {
@@ -62,14 +58,10 @@ extension Provider {
 			case .success(let response):
 
 				do {
-					let successfulResponse = try response.filterSuccessfulStatusCodes()
-					if let header = successfulResponse.response?.allHeaderFields {
-						if let newAccessToken = header[HeaderKeys.AUTHORIZATION] {
-							Keychain().apiAccessToken = newAccessToken as? String
-							self.requestJSON(target, decoder: decoder, completion: completion)
-						}
-					}
-					// FALLBACK
+
+					// The extraction of the token is done by the 'AuthTokenExtractorPlugin'
+					let _ = try response.filterSuccessfulStatusCodes()
+					
 				} catch {
 
 					guard let e = error as? MoyaError else {

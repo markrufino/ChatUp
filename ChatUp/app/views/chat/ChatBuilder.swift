@@ -15,6 +15,7 @@ class ChatBuilder: BuilderType<ChatViewController> {
 		let credentials = PusherKeys.default
 		view.userInfoService = userInfoService
 		view.chatService = ChatService(Provider.default, withUserInfoService: userInfoService, andCredentials: credentials, servicing: view, inChannel: 1)
+		view.logoutService = LogoutService(toService: view)
         return view
     }
     

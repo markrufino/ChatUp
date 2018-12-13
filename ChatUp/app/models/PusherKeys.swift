@@ -21,7 +21,7 @@ extension PusherKeys {
 
 	static func create(fromJSONFileWithName name: String) -> PusherKeys {
 		guard let file = Bundle.main.path(forResource: name, ofType: "json") else {
-			fatalError("Unable to find \(name).json in bundle.")
+			fatalError("Unable to find \(name).json in bundle. Not available in repo for security reasons.")
 		}
 		let jsonString = try! String(contentsOfFile: file)
 		let jsonData = jsonString.data(using: .utf8)
