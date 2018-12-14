@@ -19,6 +19,7 @@
 		5C2F438921BF7C3B00A10B38 /* MockChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F438821BF7C3B00A10B38 /* MockChatService.swift */; };
 		5C39E7BE21C357C1007C2B3F /* UITextField+getTrimmedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39E7BD21C357C1007C2B3F /* UITextField+getTrimmedText.swift */; };
 		5C39E7C121C358C9007C2B3F /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39E7C021C358C9007C2B3F /* RegistrationService.swift */; };
+		5C39E7C421C36041007C2B3F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39E7C321C36041007C2B3F /* MainCoordinator.swift */; };
 		5C60C6D121BF9D17008DE2AE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C60C6CF21BF9D17008DE2AE /* LoginViewController.swift */; };
 		5C60C6D221BF9D17008DE2AE /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C60C6D021BF9D17008DE2AE /* LoginViewController.xib */; };
 		5C60C6D421BFA0C3008DE2AE /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C60C6D321BFA0C3008DE2AE /* LoginService.swift */; };
@@ -94,6 +95,7 @@
 		5C2F438821BF7C3B00A10B38 /* MockChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChatService.swift; sourceTree = "<group>"; };
 		5C39E7BD21C357C1007C2B3F /* UITextField+getTrimmedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+getTrimmedText.swift"; sourceTree = "<group>"; };
 		5C39E7C021C358C9007C2B3F /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
+		5C39E7C321C36041007C2B3F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		5C60C6CF21BF9D17008DE2AE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5C60C6D021BF9D17008DE2AE /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		5C60C6D321BFA0C3008DE2AE /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
@@ -213,6 +215,14 @@
 			path = registration;
 			sourceTree = "<group>";
 		};
+		5C39E7C221C35F89007C2B3F /* coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				5C39E7C321C36041007C2B3F /* MainCoordinator.swift */,
+			);
+			path = coordinator;
+			sourceTree = "<group>";
+		};
 		5C60C6CE21BF9D01008DE2AE /* login */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				5C6E92E021BC8E27005FECCA /* AppDelegate.swift */,
+				5C39E7C221C35F89007C2B3F /* coordinator */,
 				5C6E930621BC9151005FECCA /* data */,
 				5C6E92E121BC8E27005FECCA /* errors */,
 				5CF46BFE21BE19FB009E8AC8 /* extensions */,
@@ -708,6 +719,7 @@
 				5C6E92F421BC8E28005FECCA /* API.swift in Sources */,
 				5CF46C0421BE1B12009E8AC8 /* JSONDecoder+snakeCaseDecoder.swift in Sources */,
 				5C6E933321BC998B005FECCA /* ViewType.swift in Sources */,
+				5C39E7C421C36041007C2B3F /* MainCoordinator.swift in Sources */,
 				5C60C6D821BFA5B8008DE2AE /* UIDevice+modelName.swift in Sources */,
 				5CE156A221C20A6A00D1F667 /* Provider+requestJSON.swift in Sources */,
 				5CE156B221C2819A00D1F667 /* ChatMessageFromHistory.swift in Sources */,
