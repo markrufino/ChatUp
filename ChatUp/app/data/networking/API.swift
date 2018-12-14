@@ -113,7 +113,8 @@ extension API: TargetType {
 
 		case .accessToken:
 			guard let accessToken = keychain.apiAccessToken else {
-				fatalError("ERROR: Attempting call an authenticated endpoint w/o an access token!")
+				let description = String(describing: self)
+				fatalError("ERROR: Attempting call an authenticated endpoint \(description) w/o an access token!")
 			}
 			baseHeader[HeaderKeys.AUTHORIZATION] = "\(accessToken)"
 			return baseHeader

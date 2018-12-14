@@ -9,6 +9,7 @@
 import Foundation
 
 typealias LoginResponse = DataResp<User>
+typealias RegistrationResponse = DataResp<User>
 
 struct User: Codable {
 	let id: Int
