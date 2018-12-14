@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         initWindow()
         initForFirstLaunchIfNeeded()
+		IQKeyboardManager.shared.enable = true
         return true
     }
 
@@ -49,10 +51,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
     
     func initWindow() {
-        window = UIWindow(frame: UIScreen.main.bounds
-			
-        window?.rootViewController = RootBuilder().build()
-        window?.makeKeyAndVisible()
+        window = UIWindow(frame: UIScreen.main.bounds)
+		mainCoordinator = MainCoordinator(window: window.expect(message: "AppDelegate window is null."))
+		mainCoordinator?.start()
     }
     
     func initForFirstLaunchIfNeeded() {

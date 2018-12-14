@@ -8,12 +8,23 @@
 
 import Foundation
 
-class LoginBuilder: BuilderType<LoginViewController> {
+struct LoginDependency: DependencyType {
+	var coordinator: LoginCoordinator
+}
 
-	override func build() -> LoginViewController {
+class LoginBuilder: BuilderType<LoginViewController, LoginDependency> {
+
+	override func build(_ dependency: LoginDependency) -> LoginViewController {
 		let provider = Provider.default
 		let userInfoService = UserInfoService()
-		view.loginService = LoginService(withProvider: provider, andUserInfoService: userInfoService, servicing: view)
+//		view.coordinator = dependency.coordinator
+
+//		#if DEBUG
+//			view.loginService = MockLoginService(serviceable: view, andUserInfoService: userInfoService)
+//		#else
+//			view.loginService = LoginService(withProvider: provider, andUserInfoService: userInfoService, servicing: view)
+//		#endif
+
 		return view
 	}
 

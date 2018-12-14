@@ -16,5 +16,6 @@ target 'ChatUp' do
 
   # UI
   pod 'SnapKit'
+  pod 'IQKeyboardManagerSwift'
 
 end

@@ -10,11 +10,17 @@ import UIKit
 
 class RegistrationViewController: UIViewController, CreatedFromNib {
 
+	deinit {
+		let typeName = String(describing: self)
+		print("\(typeName) instance was deallocated.")
+	}
+	
 	@IBOutlet weak var nameTextField: UITextField!
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
 	@IBOutlet weak var confirmPasswordTextField: UITextField!
 
+	weak var coordinator: RegistrationCoordinator?
 	var registrationService: RegistrationServicing?
 
     override func viewDidLoad() {
@@ -55,12 +61,17 @@ class RegistrationViewController: UIViewController, CreatedFromNib {
 		registrationService?.registerUser(withName: name, email: email, andPassword: password)
 	}
 
+	@IBAction func didTapBack(_ sender: Any) {
+		coordinator?.registrationGoBackToLogin()
+	}
+
+
 }
 
 extension RegistrationViewController: RegistrationServiceable {
 	
 	func registrationSuccess() {
-		self.present(ChatBuilder().build(), animated: true, completion: nil)
+		coordinator?.registrationGoToChat()
 	}
 
 	func registrationFailed(withError message: String) {

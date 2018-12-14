@@ -8,12 +8,23 @@
 
 import Foundation
 
-class RegistrationBuilder: BuilderType<RegistrationViewController> {
+struct RegistrationDependency: DependencyType {
+	var coordinator: RegistrationCoordinator
+}
 
-	override func build() -> RegistrationViewController {
+class RegistrationBuilder: BuilderType<RegistrationViewController, RegistrationDependency> {
+
+	override func build(_ dependency: RegistrationDependency) -> RegistrationViewController {
 		let provider = Provider.default
 		let userInfoService = UserInfoService()
-		let registrationService = RegistrationService(withProvider: provider, andUserInfoService: userInfoService, toService: view)
+
+		#if DEBUG
+			let registrationService = MockRegistrationService(serviceable: view)
+		#else
+			let registrationService = RegistrationService(withProvider: provider, andUserInfoService: userInfoService, toService: view)
+		#endif
+
+		view.coordinator = dependency.coordinator
 		view.registrationService  = registrationService
 		return view
 	}

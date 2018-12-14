@@ -12,7 +12,8 @@ import UIKit
 class ChatViewController: UIViewController, CreatedFromNib {
 
 	deinit {
-		print("ChatViewController instance was deallocated.")
+		let typeName = String(describing: self)
+		print("\(typeName) instance was deallocated.")
 	}
 
 	@IBOutlet weak var userNameLabel: UILabel!
@@ -21,6 +22,7 @@ class ChatViewController: UIViewController, CreatedFromNib {
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var sendButton: UIButton!
 
+	weak var coordinator: ChatCoordinator?
 	var userInfoService: UserInfoServicing?
     var chatService: ChatServicing?
 	var logoutService: LogoutServicing?
@@ -129,6 +131,7 @@ extension ChatViewController: UITableViewDelegate {
 		return 100.0
 	}
 
+
 }
 
 extension ChatViewController: UITableViewDataSource {
@@ -226,7 +229,7 @@ extension ChatViewController: ChatServiceable {
 extension ChatViewController: LogoutServiceable {
 
 	func userWasSuccessfullyLoggedOut() {
-		self.dismiss(animated: true, completion: nil)
+		coordinator?.chatLogoutToLoginScreen()
 	}
 
 }

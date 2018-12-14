@@ -10,9 +10,15 @@ import UIKit
 
 class LoginViewController: UIViewController, CreatedFromNib {
 
+	deinit {
+		let typeName = String(describing: self)
+		print("\(typeName) instance was deallocated.")
+	}
+
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
 
+	weak var coordinator: LoginCoordinator?
 	var loginService: LoginServicing?
 
 	override func viewDidLoad() {
@@ -46,7 +52,7 @@ class LoginViewController: UIViewController, CreatedFromNib {
 	}
 
 	@IBAction func didTapRegister(_ sender: Any) {
-
+		coordinator?.loginGoToRegistration()
 	}
 
 	private func validateAndGetEmail() -> String? {
@@ -66,7 +72,7 @@ class LoginViewController: UIViewController, CreatedFromNib {
 extension LoginViewController: LoginServiceable {
 
 	func loginSuccess() {
-		self.present(ChatBuilder().build(), animated: true, completion: nil)
+		coordinator?.loginGoToChat()
 	}
 
 	func loginFailed(withError message: String) {

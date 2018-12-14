@@ -24,7 +24,7 @@ class MockChatService: ChatServicing {
 		"""
 	]
 
-	private let serviceable: ChatServiceable
+	private weak var serviceable: ChatServiceable?
 
 	init(serviceable: ChatServiceable) {
 		self.serviceable = serviceable
@@ -34,9 +34,9 @@ class MockChatService: ChatServicing {
 	}
 
 	func send(chatMessage: ChatMessageType) {
-		serviceable.chatService(successfullySentMessage: chatMessage)
+		serviceable?.chatService(successfullySentMessage: chatMessage)
 		let randomResponse = responses[Int.random(in: 0 ... 3)]
-		serviceable.chatService(didReceiveMessage: ChatMessageType.string(randomResponse), fromSenderName: "🤖 MockChatService")
+		serviceable?.chatService(didReceiveMessage: ChatMessageType.string(randomResponse), fromSenderName: "🤖 MockChatService")
 	}
 
 	func stop() {

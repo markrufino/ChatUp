@@ -9,15 +9,15 @@
 import Foundation
 import UIKit
 
-class BuilderType<V: UIViewController & CreatedFromNib> {
+class BuilderType<V: UIViewController & CreatedFromNib, D: DependencyType> {
     
-    var view: V
+    var view: V!
     
     init() {
         self.view = V.create()
     }
     
-    func build() -> V {
+	func build(_ dependency: D) -> V {
         return view
     }
     

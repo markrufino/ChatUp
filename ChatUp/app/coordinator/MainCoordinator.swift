@@ -9,24 +9,73 @@
 import Foundation
 import UIKit
 
-class MainCoordinator<VC: UIViewController & CreatedFromNib> {
+class MainCoordinator {
 
-	private var rootViewController: UINavigationController
+	var window: UIWindow
 
-	init() {
-		self.rootViewController = UINavigationController(rootViewController: VC.create())
+	init(window: UIWindow) {
+		self.window = window
 	}
 
-	func goToLogin() {
-		rootViewController.present(LoginBuilder().build(), animated: true, completion: nil)
+	func start() {
+		let dependency = RootDependency(coordinator: self)
+		navigationVc = UINavigationController(rootViewController: rootBuilder.build(dependency))
+		window.rootViewController = navigationVc
+		window.makeKeyAndVisible()
 	}
 
-	func goToChat() {
-		rootViewController.present(ChatBuilder().build(), animated: true, completion: nil)
+	// MARK: -
+	private var navigationVc: UINavigationController?
+	private var rootBuilder: RootBuilder = RootBuilder()
+	private var loginBuilder: LoginBuilder = LoginBuilder()
+	private var registrationBuilder: RegistrationBuilder = RegistrationBuilder()
+	private var chatBuilder: ChatBuilder = ChatBuilder()
+
+	private var loginViewController: LoginViewController!
+
+}
+
+extension MainCoordinator: RootCoordinator {
+
+	func rootGoToLogin() {
+		let dependency = LoginDependency(coordinator: self)
+		loginViewController = loginBuilder.build(dependency)
+		navigationVc?.pushViewController(loginViewController, animated: true)
 	}
 
-	func logOutToRoot() {
-		rootViewController.popToRootViewController(animated: true)
+}
+
+extension MainCoordinator: LoginCoordinator {
+
+	func loginGoToChat() {
+		let dependency = ChatDependency(coordinator: self)
+		navigationVc?.pushViewController(chatBuilder.build(dependency), animated: true)
+	}
+
+	func loginGoToRegistration() {
+		let dependency = RegistrationDependency(coordinator: self)
+		navigationVc?.pushViewController(registrationBuilder.build(dependency), animated: true)
+	}
+
+}
+
+extension MainCoordinator: RegistrationCoordinator {
+
+	func registrationGoBackToLogin() {
+		navigationVc?.popToViewController(loginViewController, animated: true)
+	}
+
+	func registrationGoToChat() {
+		let dependency = ChatDependency(coordinator: self)
+		navigationVc?.pushViewController(chatBuilder.build(dependency), animated: true)
+	}
+
+}
+
+extension MainCoordinator: ChatCoordinator {
+
+	func chatLogoutToLoginScreen() {
+		navigationVc?.popToViewController(loginViewController, animated: true)
 	}
 
 }

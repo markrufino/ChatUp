@@ -8,9 +8,14 @@
 
 import Foundation
 
-class RootBuilder: BuilderType<RootViewController> {
+struct RootDependency: DependencyType {
+	var coordinator: RootCoordinator
+}
+
+class RootBuilder: BuilderType<RootViewController, RootDependency> {
     
-    override func build() -> RootViewController {
+	override func build(_ dependency: RootDependency) -> RootViewController {
+		view.coordinator = dependency.coordinator
         return view
     }
 
