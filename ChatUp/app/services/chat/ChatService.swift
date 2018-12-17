@@ -148,8 +148,9 @@ class ChatService: ChatServicing {
 			let senderName = chatMessage.data.sender.data.name
 			serviceable?.chatService(didReceiveMessage: ChatMessageType.string(stringChatMessage), fromSenderName: senderName)
 		} catch {
-			let decodeError = error as! DecodingError
-			print(decodeError.localizedDescription)
+			if let decodingError = error as? DecodingError {
+				print(decodingError)
+			}
 		}
 
 	}
