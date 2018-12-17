@@ -18,13 +18,7 @@ class LoginBuilder: BuilderType<LoginViewController, LoginDependency> {
 		let provider = Provider.default
 		let userInfoService = UserInfoService()
 		view.coordinator = dependency.coordinator
-
-		#if DEBUG
-			view.loginService = MockLoginService(serviceable: view, andUserInfoService: userInfoService)
-		#else
-			view.loginService = LoginService(withProvider: provider, andUserInfoService: userInfoService, servicing: view)
-		#endif
-
+		view.loginService = LoginService(withProvider: provider, andUserInfoService: userInfoService, servicing: view)
 		return view
 	}
 

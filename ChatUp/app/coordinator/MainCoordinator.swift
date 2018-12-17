@@ -19,14 +19,14 @@ class MainCoordinator {
 
 	func start() {
 		let dependency = RootDependency(coordinator: self)
-		navigationVc = UINavigationController(rootViewController: RootBuilder().build(dependency))
-		window.rootViewController = navigationVc
+		self.rootViewController = RootBuilder().build(dependency)
+		window.rootViewController = self.rootViewController
 		window.makeKeyAndVisible()
 	}
 
 	// MARK: -
 	private var navigationVc: UINavigationController?
-	private var loginViewController: LoginViewController!
+	private var rootViewController: RootViewController?
 
 }
 
@@ -34,8 +34,9 @@ extension MainCoordinator: RootCoordinator {
 
 	func rootGoToLogin() {
 		let dependency = LoginDependency(coordinator: self)
-		loginViewController = LoginBuilder().build(dependency)
-		navigationVc?.pushViewController(loginViewController, animated: true)
+		let builder = LoginBuilder()
+		navigationVc = UINavigationController(rootViewController: builder.build(dependency))
+		rootViewController?.present(navigationVc.expect(message: "navigationVc should be available at this point."), animated: true, completion: nil)
 	}
 
 }
@@ -44,12 +45,14 @@ extension MainCoordinator: LoginCoordinator {
 
 	func loginGoToChat() {
 		let dependency = ChatDependency(coordinator: self)
-		navigationVc?.pushViewController(ChatBuilder().build(dependency), animated: true)
+		let builder = ChatBuilder()
+		navigationVc?.pushViewController(builder.build(dependency), animated: true)
 	}
 
 	func loginGoToRegistration() {
 		let dependency = RegistrationDependency(coordinator: self)
-		navigationVc?.pushViewController(RegistrationBuilder().build(dependency), animated: true)
+		let builder = RegistrationBuilder()
+		navigationVc?.pushViewController(builder.build(dependency), animated: true)
 	}
 
 }
@@ -57,12 +60,13 @@ extension MainCoordinator: LoginCoordinator {
 extension MainCoordinator: RegistrationCoordinator {
 
 	func registrationGoBackToLogin() {
-		navigationVc?.popToViewController(loginViewController, animated: true)
+		navigationVc?.popToRootViewController(animated: true)
 	}
 
 	func registrationGoToChat() {
 		let dependency = ChatDependency(coordinator: self)
-		navigationVc?.pushViewController(ChatBuilder().build(dependency), animated: true)
+		let builder = ChatBuilder()
+		navigationVc?.pushViewController(builder.build(dependency), animated: true)
 	}
 
 }
@@ -70,7 +74,7 @@ extension MainCoordinator: RegistrationCoordinator {
 extension MainCoordinator: ChatCoordinator {
 
 	func chatLogoutToLoginScreen() {
-		navigationVc?.popToViewController(loginViewController, animated: true)
+		navigationVc?.popToRootViewController(animated: true)
 	}
 
 }

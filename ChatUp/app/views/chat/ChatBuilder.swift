@@ -19,14 +19,7 @@ class ChatBuilder: BuilderType<ChatViewController, ChatDependency> {
 		let credentials = PusherKeys.default
 		view.coordinator = dependency.coordinator
 		view.userInfoService = userInfoService
-
-		#if DEBUG
-//			view.chatService = MockChatService(serviceable: view)
-		#else
-//			view.chatService = ChatService(Provider.default, withUserInfoService: userInfoService, andCredentials: credentials, servicing: view, inChannel: 1)
-		#endif
-
-
+		view.chatService = ChatService(Provider.default, withUserInfoService: userInfoService, andCredentials: credentials, servicing: view, inChannel: 1)
 		view.logoutService = LogoutService(toService: view)
         return view
     }

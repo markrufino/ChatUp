@@ -17,13 +17,7 @@ class RegistrationBuilder: BuilderType<RegistrationViewController, RegistrationD
 	override func build(_ dependency: RegistrationDependency) -> RegistrationViewController {
 		let provider = Provider.default
 		let userInfoService = UserInfoService()
-
-		#if DEBUG
-			let registrationService = MockRegistrationService(serviceable: view)
-		#else
-			let registrationService = RegistrationService(withProvider: provider, andUserInfoService: userInfoService, toService: view)
-		#endif
-
+		let registrationService = RegistrationService(withProvider: provider, andUserInfoService: userInfoService, toService: view)
 		view.coordinator = dependency.coordinator
 		view.registrationService  = registrationService
 		return view
