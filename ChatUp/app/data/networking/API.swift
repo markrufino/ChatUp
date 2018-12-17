@@ -94,16 +94,13 @@ extension API: TargetType {
     
     var headers: [String : String]? {
 
-		let keychain = Keychain()
-		let fcmToken = keychain.fcmToken ?? "<not yet set>"
-
 		var baseHeader = [
 			HeaderKeys.X_DEVICE_UDID : UIDevice.udid,
 			HeaderKeys.X_DEVICE_OS : UIDevice.os,
 			HeaderKeys.X_DEVICE_OS_VERSION: UIDevice.osVersion,
 			HeaderKeys.X_DEVICE_MANUFACTURER: UIDevice.manufacturer,
 			HeaderKeys.X_DEVICE_MODEL : UIDevice.model,
-			HeaderKeys.X_DEVICE_FCM_TOKEN: fcmToken,
+			HeaderKeys.X_DEVICE_FCM_TOKEN: Keychain().fcmToken ?? "<none>",
 			HeaderKeys.X_DEVICE_APP_VERSION : UIDevice.appVersion,
 			HeaderKeys.CONTENT_TYPE: "application/json",
 			HeaderKeys.ACCEPT: "application/json"
@@ -111,17 +108,13 @@ extension API: TargetType {
 
 		switch auth {
 
-		case .accessToken:
-			guard let accessToken = keychain.apiAccessToken else {
-				let description = String(describing: self)
-				fatalError("ERROR: Attempting call an authenticated endpoint \(description) w/o an access token!")
-			}
+		case .accessToken(let accessToken):
 			baseHeader[HeaderKeys.AUTHORIZATION] = "\(accessToken)"
 			return baseHeader
 
 		case .none:
 			return baseHeader
-
+			
 		}
 
     }
@@ -141,7 +134,9 @@ extension API {
 			 .logout,
 			 .getChannelInfo,
 			 .sendMessage:
-			return .accessToken
+			let keychain = Keychain()
+			let accessToken = keychain.apiAccessToken.expect(message: "Attempting to call '\(self.path)' without an access token!")
+			return .accessToken(accessToken)
 		}
     }
     

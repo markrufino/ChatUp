@@ -49,7 +49,8 @@ extension MainCoordinator: LoginCoordinator {
 
 	func loginGoToChat() {
 		let dependency = ChatDependency(coordinator: self)
-		navigationVc?.pushViewController(chatBuilder.build(dependency), animated: true)
+		let chatViewController = chatBuilder.build(dependency)
+		navigationVc?.pushViewController(chatViewController, animated: true)
 	}
 
 	func loginGoToRegistration() {

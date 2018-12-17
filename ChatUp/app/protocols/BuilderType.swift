@@ -11,13 +11,13 @@ import UIKit
 
 class BuilderType<V: UIViewController & CreatedFromNib, D: DependencyType> {
     
-    var view: V!
+    weak var view: V!
     
     init() {
-        self.view = V.create()
     }
     
 	func build(_ dependency: D) -> V {
+		self.view = V.create()
         return view
     }
     

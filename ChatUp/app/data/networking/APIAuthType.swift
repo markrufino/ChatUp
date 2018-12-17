@@ -11,7 +11,7 @@ import Foundation
 enum APIAuthType {
     
     case none
-    case accessToken
+    case accessToken(String)
 
 }
 
