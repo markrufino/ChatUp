@@ -94,7 +94,7 @@ class ChatService: ChatServicing {
 
 				// process message history
 
-				let history = channel.messages.data.flatMap({ (message) -> ChatMessageFromHistory in
+				let history = channel.messages.data.compactMap({ (message) -> ChatMessageFromHistory in
 					// NOTE: In the near future, messages should have a type property so that we could check if they are plain text or they come w/ media
 					let chatMessageType = ChatMessageType.string(message.message ?? "")
 					let senderName = message.sender.data.name
