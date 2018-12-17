@@ -16,7 +16,7 @@ class AuthTokenExtractorPlugin: PluginType {
 	func didReceive(_ result: Result<Response, MoyaError>, target: TargetType) {
 		let api = target as! API
 		switch api {
-		case .login, .refreshToken:
+		case .login, .register, .refreshToken: // register should be here
 			switch result {
 			case .success(let response):
 

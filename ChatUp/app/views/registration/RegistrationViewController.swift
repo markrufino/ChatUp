@@ -58,23 +58,26 @@ class RegistrationViewController: UIViewController, CreatedFromNib {
 			showAlert(withType: .error, andMessage: "Passwords didn't match.")
 			return
 		}
+
+		showHUD()
 		registrationService?.registerUser(withName: name, email: email, andPassword: password)
 	}
 
-	@IBAction func didTapBack(_ sender: Any) {
+	@IBAction func didTapBackToLogin(_ sender: Any) {
 		coordinator?.registrationGoBackToLogin()
 	}
-
 
 }
 
 extension RegistrationViewController: RegistrationServiceable {
 	
 	func registrationSuccess() {
+		hideHUD()
 		coordinator?.registrationGoToChat()
 	}
 
 	func registrationFailed(withError message: String) {
+		hideHUD()
 		showAlert(withType: .error, andMessage: message)
 	}
 

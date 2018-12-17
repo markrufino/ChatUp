@@ -15,6 +15,7 @@ target 'ChatUp' do
   pod 'KeychainSwift'
 
   # UI
+  pod 'MBProgressHUD', '~> 1.1.0'
   pod 'SnapKit'
   pod 'IQKeyboardManagerSwift'
 

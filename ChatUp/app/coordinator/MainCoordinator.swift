@@ -28,14 +28,20 @@ class MainCoordinator {
 	private var navigationVc: UINavigationController?
 	private var rootViewController: RootViewController?
 
+	private func setupNavigationVc() -> UINavigationController {
+		let dependency = LoginDependency(coordinator: self)
+		let builder = LoginBuilder()
+		let navVc = UINavigationController(rootViewController: builder.build(dependency))
+		navVc.setNavigationBarHidden(true, animated: false)
+		return navVc
+	}
+
 }
 
 extension MainCoordinator: RootCoordinator {
 
 	func rootGoToLogin() {
-		let dependency = LoginDependency(coordinator: self)
-		let builder = LoginBuilder()
-		navigationVc = UINavigationController(rootViewController: builder.build(dependency))
+		navigationVc = setupNavigationVc()
 		rootViewController?.present(navigationVc.expect(message: "navigationVc should be available at this point."), animated: true, completion: nil)
 	}
 

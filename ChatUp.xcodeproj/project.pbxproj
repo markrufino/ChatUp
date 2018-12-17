@@ -71,6 +71,7 @@
 		5CE156AD21C2683D00D1F667 /* AuthTokenExtractorPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE156AC21C2683D00D1F667 /* AuthTokenExtractorPlugin.swift */; };
 		5CE156B021C271EE00D1F667 /* LogoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE156AF21C271EE00D1F667 /* LogoutService.swift */; };
 		5CE156B221C2819A00D1F667 /* ChatMessageFromHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE156B121C2819A00D1F667 /* ChatMessageFromHistory.swift */; };
+		5CED661421C75543008FD0F8 /* UIViewController+HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CED661321C75543008FD0F8 /* UIViewController+HUD.swift */; };
 		5CF46C0021BE1A29009E8AC8 /* Encodable+asDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF46BFF21BE1A29009E8AC8 /* Encodable+asDictionary.swift */; };
 		5CF46C0221BE1AC0009E8AC8 /* JSONEncoder+snakeCaseEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF46C0121BE1AC0009E8AC8 /* JSONEncoder+snakeCaseEncoder.swift */; };
 		5CF46C0421BE1B12009E8AC8 /* JSONDecoder+snakeCaseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF46C0321BE1B12009E8AC8 /* JSONDecoder+snakeCaseDecoder.swift */; };
@@ -153,6 +154,7 @@
 		5CE156AC21C2683D00D1F667 /* AuthTokenExtractorPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokenExtractorPlugin.swift; sourceTree = "<group>"; };
 		5CE156AF21C271EE00D1F667 /* LogoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutService.swift; sourceTree = "<group>"; };
 		5CE156B121C2819A00D1F667 /* ChatMessageFromHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageFromHistory.swift; sourceTree = "<group>"; };
+		5CED661321C75543008FD0F8 /* UIViewController+HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+HUD.swift"; sourceTree = "<group>"; };
 		5CF46BFF21BE1A29009E8AC8 /* Encodable+asDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+asDictionary.swift"; sourceTree = "<group>"; };
 		5CF46C0121BE1AC0009E8AC8 /* JSONEncoder+snakeCaseEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+snakeCaseEncoder.swift"; sourceTree = "<group>"; };
 		5CF46C0321BE1B12009E8AC8 /* JSONDecoder+snakeCaseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+snakeCaseDecoder.swift"; sourceTree = "<group>"; };
@@ -475,9 +477,10 @@
 				5C60C6D521BFA2B3008DE2AE /* UIDevice+.swift */,
 				5C60C6D721BFA5B8008DE2AE /* UIDevice+modelName.swift */,
 				5C2CAE9521BE88F70014C86B /* UITableView+registerCustomCell.swift */,
-				5CF46C1A21BE62B5009E8AC8 /* UIView+cornerRadius.swift */,
-				5CC5A13321BFB48100F83EA5 /* UIViewController+showAlert.swift */,
 				5C39E7BD21C357C1007C2B3F /* UITextField+getTrimmedText.swift */,
+				5CF46C1A21BE62B5009E8AC8 /* UIView+cornerRadius.swift */,
+				5CED661321C75543008FD0F8 /* UIViewController+HUD.swift */,
+				5CC5A13321BFB48100F83EA5 /* UIViewController+showAlert.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/PusherSwift/PusherSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
@@ -660,6 +664,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PusherSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
@@ -737,6 +742,7 @@
 				5C6E92F421BC8E28005FECCA /* API.swift in Sources */,
 				5CF46C0421BE1B12009E8AC8 /* JSONDecoder+snakeCaseDecoder.swift in Sources */,
 				5C6E933321BC998B005FECCA /* ViewType.swift in Sources */,
+				5CED661421C75543008FD0F8 /* UIViewController+HUD.swift in Sources */,
 				5C39E7C421C36041007C2B3F /* MainCoordinator.swift in Sources */,
 				5C60C6D821BFA5B8008DE2AE /* UIDevice+modelName.swift in Sources */,
 				5CE156A221C20A6A00D1F667 /* Provider+requestJSON.swift in Sources */,

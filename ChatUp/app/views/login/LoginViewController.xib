@@ -54,8 +54,8 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ag8-zR-JOj">
-                                    <rect key="frame" x="101" y="128" width="38" height="30"/>
-                                    <state key="normal" title="Login">
+                                    <rect key="frame" x="103" y="128" width="34" height="30"/>
+                                    <state key="normal" title="login">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>

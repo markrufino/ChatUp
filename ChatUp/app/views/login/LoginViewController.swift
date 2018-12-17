@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class LoginViewController: UIViewController, CreatedFromNib {
 
@@ -33,7 +34,7 @@ class LoginViewController: UIViewController, CreatedFromNib {
 
 	private func initTextFields() {
 		#if DEBUG
-		self.emailTextField.text = "jimuelpalaca@gmail.com"
+		self.emailTextField.text = "mark.rufino.io@gmail.com"
 		self.passwordTextField.text = "hello123"
 		#endif
 	}
@@ -48,6 +49,7 @@ class LoginViewController: UIViewController, CreatedFromNib {
 			showAlert(withType: .error, andMessage: "Invalid Password")
 			return
 		}
+		showHUD()
 		loginService?.login(withEmail: email, andPassword: password)
 	}
 
@@ -72,10 +74,12 @@ class LoginViewController: UIViewController, CreatedFromNib {
 extension LoginViewController: LoginServiceable {
 
 	func loginSuccess() {
+		hideHUD()
 		coordinator?.loginGoToChat()
 	}
 
 	func loginFailed(withError message: String) {
+		hideHUD()
 		showAlert(withType: .error, andMessage: "Login Error - \(message)")
 	}
 

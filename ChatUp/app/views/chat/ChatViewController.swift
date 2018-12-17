@@ -20,7 +20,6 @@ class ChatViewController: UIViewController, CreatedFromNib {
 	@IBOutlet weak var onlineStatusIndicatorView: UIView!
 	@IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var messageTextView: UITextView!
-    @IBOutlet weak var sendButton: UIButton!
 
 	weak var coordinator: ChatCoordinator?
 	var userInfoService: UserInfoServicing?
@@ -72,10 +71,10 @@ class ChatViewController: UIViewController, CreatedFromNib {
 	}
     
     // MARK: - Actions
-    
-    @IBAction func didTapSend(_ sender: UIButton) {
-        sendStringMessage()
-    }
+
+	@IBAction func didTapSend(_ sender: Any) {
+		sendStringMessage()
+	}
 
 	@IBAction func didTapLogOut(_ sender: Any) {
 		logoutService?.logout()
