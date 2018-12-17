@@ -11,8 +11,8 @@ import Foundation
 struct ChatMessageSender: Codable {
 	let id: Int
 	let name: String
-	let email: String
-	let isOnline: Bool
+	let email: String?
+	let isOnline: Bool?
 }
 
 extension ChatMessageSender {

@@ -88,7 +88,7 @@ class ChatService: ChatServicing {
 				self.pusher.delegate = self
 				self.pusher.connect()
 
-				self.channel = self.pusher.subscribe(channelName: channel.name)
+				self.channel = self.pusher.subscribe("private-"+channel.name)
 				self.channel?.bind(eventName: ChatEvents.newMessage.stringValue, callback: self.messageSentEventHandler(_:))
 
 
@@ -141,12 +141,17 @@ class ChatService: ChatServicing {
 		// default kind is string message
 		guard let body = data as? [String: Any] else { return }
 		guard let jsonData = try? JSONSerialization.data(withJSONObject: body, options: .prettyPrinted) else { return }
-		guard let chatMessage = try? JSONDecoder().decode(ChatMessageResponse.self, from: jsonData) else { return }
 
-		let stringChatMessage = chatMessage.data.message ?? ""
-		let senderName = chatMessage.data.sender.data.name
+		do {
+			let chatMessage = try JSONDecoder().decode(ChatMessageResponse.self, from: jsonData)
+			let stringChatMessage = chatMessage.data.message ?? ""
+			let senderName = chatMessage.data.sender.data.name
+			serviceable?.chatService(didReceiveMessage: ChatMessageType.string(stringChatMessage), fromSenderName: senderName)
+		} catch {
+			let decodeError = error as! DecodingError
+			print(decodeError.localizedDescription)
+		}
 
-		serviceable?.chatService(didReceiveMessage: ChatMessageType.string(stringChatMessage), fromSenderName: senderName)
 	}
 
 	private func send(_ stringMessage: String, _ chatMessage: ChatMessageType) {

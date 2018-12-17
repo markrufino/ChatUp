@@ -96,6 +96,7 @@ class ChatViewController: UIViewController, CreatedFromNib {
 	private var messageTextViewMaxHeight: CGFloat = 132.0
 	private var messageTextViewHeightConstraint: NSLayoutConstraint?
 	private var chatMessages: [ChatMessageViewModel] = []
+	private var sizeReference: [String: CGFloat] = [:]
 
 	private func updateTableViewWithChatMessage(_ chatMessage: ChatMessageViewModel) {
 		chatMessages.append(chatMessage)
@@ -127,9 +128,8 @@ extension ChatViewController: UITextViewDelegate {
 extension ChatViewController: UITableViewDelegate {
 
 	func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-		return 100.0
+		return UITableView.automaticDimension
 	}
-
 
 }
 
@@ -159,6 +159,8 @@ extension ChatViewController: UITableViewDataSource {
 			return rightSideChat
 		}
 	}
+
+
 
 }
 
