@@ -35,7 +35,7 @@ extension Provider {
 
 						if case .objectMapping(let mappingError, _) = e {
 							let decodingError = mappingError as! DecodingError
-							let apiError = ApiError.init(message: decodingError.localizedDescription)
+							let apiError = ApiError.init(message: "\(decodingError)")
 							requestResult = RequestResult<D>.error(apiError)
 							break
 						}
