@@ -21,9 +21,9 @@ class ChatBuilder: BuilderType<ChatViewController, ChatDependency> {
 		view.userInfoService = userInfoService
 
 		#if DEBUG
-			view.chatService = MockChatService(serviceable: view)
+//			view.chatService = MockChatService(serviceable: view)
 		#else
-			view.chatService = ChatService(Provider.default, withUserInfoService: userInfoService, andCredentials: credentials, servicing: view, inChannel: 1)
+//			view.chatService = ChatService(Provider.default, withUserInfoService: userInfoService, andCredentials: credentials, servicing: view, inChannel: 1)
 		#endif
 
 

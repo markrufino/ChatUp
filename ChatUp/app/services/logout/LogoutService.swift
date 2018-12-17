@@ -14,7 +14,7 @@ protocol LogoutServicing {
 
 }
 
-protocol LogoutServiceable {
+protocol LogoutServiceable: AnyObject {
 
 	func userWasSuccessfullyLoggedOut()
 
@@ -33,5 +33,5 @@ class LogoutService: LogoutServicing {
 	}
 
 	// MARK: - Private
-	private var serviceable: LogoutServiceable?
+	private weak var serviceable: LogoutServiceable?
 }
