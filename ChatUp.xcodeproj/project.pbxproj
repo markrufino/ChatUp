@@ -67,11 +67,11 @@
 		5CE156A221C20A6A00D1F667 /* Provider+requestJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE156A121C20A6A00D1F667 /* Provider+requestJSON.swift */; };
 		5CE156A421C20A8300D1F667 /* Provider+requestPlain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE156A321C20A8300D1F667 /* Provider+requestPlain.swift */; };
 		5CE156A621C23A1800D1F667 /* ChannelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE156A521C23A1800D1F667 /* ChannelResponse.swift */; };
-		5CE156A821C266B700D1F667 /* pusher_keys.json in Resources */ = {isa = PBXBuildFile; fileRef = 5CE156A721C266B700D1F667 /* pusher_keys.json */; };
 		5CE156AD21C2683D00D1F667 /* AuthTokenExtractorPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE156AC21C2683D00D1F667 /* AuthTokenExtractorPlugin.swift */; };
 		5CE156B021C271EE00D1F667 /* LogoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE156AF21C271EE00D1F667 /* LogoutService.swift */; };
 		5CE156B221C2819A00D1F667 /* ChatMessageFromHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE156B121C2819A00D1F667 /* ChatMessageFromHistory.swift */; };
 		5CED661421C75543008FD0F8 /* UIViewController+HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CED661321C75543008FD0F8 /* UIViewController+HUD.swift */; };
+		5CF2E6B621D5A0160071461E /* Provider+request2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2E6B521D5A0160071461E /* Provider+request2.swift */; };
 		5CF46C0021BE1A29009E8AC8 /* Encodable+asDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF46BFF21BE1A29009E8AC8 /* Encodable+asDictionary.swift */; };
 		5CF46C0221BE1AC0009E8AC8 /* JSONEncoder+snakeCaseEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF46C0121BE1AC0009E8AC8 /* JSONEncoder+snakeCaseEncoder.swift */; };
 		5CF46C0421BE1B12009E8AC8 /* JSONDecoder+snakeCaseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF46C0321BE1B12009E8AC8 /* JSONDecoder+snakeCaseDecoder.swift */; };
@@ -150,11 +150,11 @@
 		5CE156A121C20A6A00D1F667 /* Provider+requestJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Provider+requestJSON.swift"; sourceTree = "<group>"; };
 		5CE156A321C20A8300D1F667 /* Provider+requestPlain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Provider+requestPlain.swift"; sourceTree = "<group>"; };
 		5CE156A521C23A1800D1F667 /* ChannelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelResponse.swift; sourceTree = "<group>"; };
-		5CE156A721C266B700D1F667 /* pusher_keys.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pusher_keys.json; sourceTree = "<group>"; };
 		5CE156AC21C2683D00D1F667 /* AuthTokenExtractorPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokenExtractorPlugin.swift; sourceTree = "<group>"; };
 		5CE156AF21C271EE00D1F667 /* LogoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutService.swift; sourceTree = "<group>"; };
 		5CE156B121C2819A00D1F667 /* ChatMessageFromHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageFromHistory.swift; sourceTree = "<group>"; };
 		5CED661321C75543008FD0F8 /* UIViewController+HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+HUD.swift"; sourceTree = "<group>"; };
+		5CF2E6B521D5A0160071461E /* Provider+request2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Provider+request2.swift"; sourceTree = "<group>"; };
 		5CF46BFF21BE1A29009E8AC8 /* Encodable+asDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+asDictionary.swift"; sourceTree = "<group>"; };
 		5CF46C0121BE1AC0009E8AC8 /* JSONEncoder+snakeCaseEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+snakeCaseEncoder.swift"; sourceTree = "<group>"; };
 		5CF46C0321BE1B12009E8AC8 /* JSONDecoder+snakeCaseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+snakeCaseDecoder.swift"; sourceTree = "<group>"; };
@@ -281,6 +281,7 @@
 				5C6E92D621BC8E27005FECCA /* Provider.swift */,
 				5CE156A921C267A200D1F667 /* plugins */,
 				5CCC251721C16CA6008B2749 /* request_extensions */,
+				5CF2E6B021D59FCA0071461E /* rx */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -326,7 +327,6 @@
 		5C6E92EC21BC8E27005FECCA /* supporting-files */ = {
 			isa = PBXGroup;
 			children = (
-				5CE156A721C266B700D1F667 /* pusher_keys.json */,
 				5C6E92ED21BC8E27005FECCA /* Info.plist */,
 			);
 			path = "supporting-files";
@@ -465,6 +465,14 @@
 				5CE156AF21C271EE00D1F667 /* LogoutService.swift */,
 			);
 			path = logout;
+			sourceTree = "<group>";
+		};
+		5CF2E6B021D59FCA0071461E /* rx */ = {
+			isa = PBXGroup;
+			children = (
+				5CF2E6B521D5A0160071461E /* Provider+request2.swift */,
+			);
+			path = rx;
 			sourceTree = "<group>";
 		};
 		5CF46BFE21BE19FB009E8AC8 /* extensions */ = {
@@ -611,7 +619,6 @@
 				5CCC19E721BCB89700E25C95 /* ChatViewController.xib in Resources */,
 				5C6E92FE21BC8E28005FECCA /* development.xcconfig in Resources */,
 				5CA572CC21C34FAE0077618C /* RegistrationViewController.xib in Resources */,
-				5CE156A821C266B700D1F667 /* pusher_keys.json in Resources */,
 				5C2CAE9221BE84A30014C86B /* LeftChatMessageTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -686,6 +693,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CF2E6B621D5A0160071461E /* Provider+request2.swift in Sources */,
 				5CF46C1321BE2751009E8AC8 /* UserInfoService.swift in Sources */,
 				5C6E92FA21BC8E28005FECCA /* Defaults.swift in Sources */,
 				5C5930E421C397FB001F139D /* DependencyType.swift in Sources */,

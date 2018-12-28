@@ -8,6 +8,7 @@
 
 import Foundation
 import PusherSwift
+import RxSwift
 
 protocol ChatServicing {
 
@@ -79,37 +80,40 @@ class ChatService: ChatServicing {
 	// MARK: - Public
 
 	func start() {
-
-		self.provider.requestJSON(.getChannelInfo(channelId: self.channelId)) { [unowned self] (result: RequestResult<ChannelResponse>) in
-			switch result {
-			case .success(let value):
-				let channel = value.data
-
-				self.pusher.delegate = self
-				self.pusher.connect()
-
-				self.channel = self.pusher.subscribe("private-"+channel.name)
-				self.channel?.bind(eventName: ChatEvents.newMessage.stringValue, callback: self.messageSentEventHandler(_:))
-
-
-				// process message history
-
-				let history = channel.messages.data.compactMap({ (message) -> ChatMessageFromHistory in
-					// NOTE: In the near future, messages should have a type property so that we could check if they are plain text or they come w/ media
-					let chatMessageType = ChatMessageType.string(message.message ?? "")
-					let senderName = message.sender.data.name
-					let isFromUser = message.sender.data.id == self.userInfoService.userId
-					return ChatMessageFromHistory(chatMessageMeta: chatMessageType, senderName: senderName, isFromUser: isFromUser)
-				})
-
-				self.serviceable?.chatService(didReceiveMessageHistory: history)
-
-			case .error(let error):
-				self.serviceable?.chatService(failedToGetChannelInfoFor: self.channelId, withErrorMessage: error.localizedDescription)
-			}
-		}
-
+        
+        self.provider
+            .request2(.getChannelInfo(channelId: self.channelId))
+            .map(ChannelResponse.self)
+            .map { return $0.data }
+            .subscribe { (event) in
+                switch event {
+                case .next(let chan):
+                    self.connect(toChannel: chan)
+                    let chatHistory = self.mapChatHistory(ofChannel: chan)
+                    self.serviceable?.chatService(didReceiveMessageHistory: chatHistory)
+                case .error(let error):
+                    self.serviceable?.chatService(failedToGetChannelInfoFor: self.channelId, withErrorMessage: error.localizedDescription)
+                case .completed: break
+                }
+            }.disposed(by: disposeBag)
 	}
+    
+    private func connect(toChannel chan: Channel) {
+        self.pusher.delegate = self
+        self.pusher.connect()
+        let channelName = "private" + chan.name
+        self.channel = self.pusher.subscribe(channelName)
+        self.channel?.bind(eventName: ChatEvents.newMessage.stringValue, callback: self.messageSentEventHandler(_:))
+    }
+    
+    private func mapChatHistory(ofChannel chan: Channel) -> [ChatMessageFromHistory] {
+        return chan.messages.data.compactMap {
+            let type = ChatMessageType.string($0.message ?? "")
+            let senderName = $0.sender.data.name
+            let isFromUser = $0.sender.data.id == self.userInfoService.userId
+            return ChatMessageFromHistory(chatMessageMeta: type, senderName: senderName, isFromUser: isFromUser)
+        }
+    }
 
 	func send(chatMessage: ChatMessageType) {
 		switch chatMessage {
@@ -134,6 +138,8 @@ class ChatService: ChatServicing {
 	private var channel: PusherChannel?
 
 	private var retriesLeftForConnecting: Int = 1
+    
+    private var disposeBag = DisposeBag()
 
 	// MARK: - Private Methods
 
@@ -160,13 +166,23 @@ class ChatService: ChatServicing {
 		let sender: ChatMessageSender = ChatMessageSender(fromUserInfoService: self.userInfoService)
 		let message = ChatMessageParams(message: stringMessage, sender: sender)
 
-		provider.requestPlain(.sendMessage(params: message, channelId: channelId)) { (error) in
-			guard error == nil else {
-				self.serviceable?.chatService(failedToSendMessage: chatMessage)
-				return
-			}
-			self.serviceable?.chatService(successfullySentMessage: chatMessage)
-		}
+        provider.request2(.sendMessage(params: message, channelId: channelId)).subscribe { (event) in
+            switch event {
+            case .next:
+                self.serviceable?.chatService(successfullySentMessage: chatMessage)
+            case .error:
+                self.serviceable?.chatService(failedToSendMessage: chatMessage)
+            case .completed: break
+            }
+        }.disposed(by: disposeBag)
+        
+//        provider.requestPlain(.sendMessage(params: message, channelId: channelId)) { (error) in
+//            guard error == nil else {
+//                self.serviceable?.chatService(failedToSendMessage: chatMessage)
+//                return
+//            }
+//            self.serviceable?.chatService(successfullySentMessage: chatMessage)
+//        }
 
 	}
     
