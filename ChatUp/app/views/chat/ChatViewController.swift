@@ -120,6 +120,7 @@ extension ChatViewController: UITextViewDelegate {
         let clampedHeight = min(messageTextViewMaxHeight, max(41.0, newSize.height))
         messageTextViewHeightConstraint?.constant = clampedHeight
         textView.isScrollEnabled = newSize.height >= messageTextViewMaxHeight
+        textView.setNeedsLayout()
 		scrollTableToBottom()
     }
     

@@ -83,7 +83,7 @@ class ChatService: ChatServicing {
         
         self.provider
             .request2(.getChannelInfo(channelId: self.channelId))
-            .map(ChannelResponse.self)
+            .map(ChannelResponse.self, using: JSONDecoder.snakeCaseDecoder, failsOnEmptyData: true)
             .map { return $0.data }
             .subscribe { (event) in
                 switch event {

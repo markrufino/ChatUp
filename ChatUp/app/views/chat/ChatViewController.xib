@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -64,7 +64,6 @@
                         <constraint firstAttribute="trailing" secondItem="kuV-BI-AOS" secondAttribute="trailing" id="AHF-yB-W4g"/>
                         <constraint firstItem="xaX-8z-ATV" firstAttribute="top" secondItem="Z9H-An-9fk" secondAttribute="top" constant="8" id="CAi-f4-mPK"/>
                         <constraint firstItem="kuV-BI-AOS" firstAttribute="top" secondItem="Z9H-An-9fk" secondAttribute="top" id="Fht-yJ-eJf"/>
-                        <constraint firstAttribute="height" constant="56" id="M8U-yu-r5Q"/>
                         <constraint firstAttribute="bottom" secondItem="xaX-8z-ATV" secondAttribute="bottom" constant="8" id="jOJ-Iq-2s3"/>
                         <constraint firstItem="xaX-8z-ATV" firstAttribute="leading" secondItem="Z9H-An-9fk" secondAttribute="leading" constant="8" id="sjC-cD-BJp"/>
                     </constraints>

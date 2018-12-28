@@ -23,7 +23,6 @@ extension Provider {
                 guard let error = e as? MoyaError else { throw e }
                 guard case .statusCode(let errorResp) = error else { throw e }
                 
-                
                 if errorResp.statusCode == 401 {
                     
                     switch service {
